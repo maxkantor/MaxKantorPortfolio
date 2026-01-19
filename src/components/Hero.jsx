@@ -40,9 +40,7 @@
         </div>
       </div>
 
-      <div className="heroRight" aria-hidden="true">
-        <div className="heroBlend" aria-hidden="true"></div>
-      </div>
+      <div className="heroRight" aria-hidden="true"></div>
     </section>
   );
 };
