@@ -3,7 +3,8 @@
     <section id="home" className="hero">
       <div className="heroBg" aria-hidden="true" />
       <div className="heroOverlay" aria-hidden="true" />
-      <div className="heroContent">
+      <div className="heroContainer">
+        <div className="heroContent">
         <p className="eyebrow">Software Engineering Leader</p>
         <h1>Max Kantor</h1>
         <h2>Software Engineering Leader | AI + Cloud & Full-Stack Delivery (AWS)</h2>
@@ -38,6 +39,7 @@
         </div>
         <p className="hero__status">Open to Engineering Leadership opportunities</p>
         <p className="hero__trust">AWS • .NET • React • Delivery Leadership • AI Integration</p>
+        </div>
       </div>
     </section>
   );

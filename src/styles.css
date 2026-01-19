@@ -212,7 +212,7 @@ textarea:focus-visible {
 
 .hero {
   position: relative;
-  min-height: clamp(520px, 72vh, 860px);
+  min-height: clamp(560px, 72vh, 860px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -224,9 +224,9 @@ textarea:focus-visible {
   background-image: url('/hero.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 78% center;
-  transform: scale(1.03);
-  filter: contrast(1.05) saturate(1.05);
+  background-position: 70% center;
+  transform: scale(1);
+  filter: contrast(1.03) saturate(1.03);
 }
 
 .heroOverlay {
@@ -234,18 +234,24 @@ textarea:focus-visible {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(7, 10, 18, 0.88) 0%,
-    rgba(7, 10, 18, 0.62) 40%,
-    rgba(7, 10, 18, 0.22) 70%,
-    rgba(7, 10, 18, 0.05) 100%
+    rgba(7, 10, 18, 0.78) 0%,
+    rgba(7, 10, 18, 0.55) 42%,
+    rgba(7, 10, 18, 0.20) 72%,
+    rgba(7, 10, 18, 0.02) 100%
   );
 }
 
-.heroContent {
+.heroContainer {
   position: relative;
   z-index: 2;
-  width: min(740px, 92vw);
-  padding: clamp(20px, 4vw, 56px);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.heroContent {
+  width: min(720px, 100%);
   display: grid;
   gap: 1.1rem;
 }
@@ -337,14 +343,16 @@ textarea:focus-visible {
 }
 
 button,
-a.button,
+a[role='button'],
 .btn,
+.button,
 .primaryButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1.2;
-  font-weight: 600;
+  gap: 8px;
+  line-height: 1.15;
+  font-weight: 700;
   padding: 12px 18px;
   min-height: 44px;
   border-radius: 10px;
@@ -354,6 +362,8 @@ a.button,
   font-size: 15px;
   border: 1px solid transparent;
   transition: all 0.2s ease;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 .btn--sm {
@@ -364,7 +374,7 @@ a.button,
 
 .btn--primary {
   background: linear-gradient(120deg, var(--accent), var(--accent-strong));
-  color: #fff;
+  color: #071018;
 }
 
 .btn--primary:hover,
@@ -372,7 +382,7 @@ a.button,
   transform: translateY(-1px);
   box-shadow: var(--shadow);
   filter: brightness(1.02);
-  color: #fff;
+  color: #071018;
 }
 
 .btn--ghost {
@@ -387,21 +397,32 @@ a.button,
   color: #fff;
 }
 
+button:disabled,
 .btn:disabled,
-.btn--disabled {
+.button:disabled {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.92);
   cursor: not-allowed;
   box-shadow: none;
 }
 
 button span,
-a.button span,
+a[role='button'] span,
 .btn span,
+.button span,
 .primaryButton span {
   color: inherit;
   opacity: 1;
+}
+
+.primary,
+.primaryButton,
+.contactButton,
+.ctaButton,
+button[type='submit'] {
+  opacity: 1 !important;
+  color: #071018 !important;
 }
 
 .navbar .contactButton,
@@ -706,15 +727,19 @@ main section {
 
   .heroBg {
     background-position: center top;
-    transform: scale(1.02);
+    transform: scale(1);
   }
 
   .heroOverlay {
-    background: rgba(7, 10, 18, 0.74);
+    background: rgba(7, 10, 18, 0.72);
+  }
+
+  .heroContainer {
+    padding: 0 18px;
   }
 
   .heroContent {
-    width: 92vw;
+    width: 100%;
   }
 
   .hero__actions {
