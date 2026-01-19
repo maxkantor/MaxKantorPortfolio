@@ -26,7 +26,7 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a className="btn btn--primary btn--sm" href="#contact">
+          <a className="btn btn--primary btn--sm contactButton" href="#contact">
             Contact
           </a>
         </nav>
@@ -53,7 +53,11 @@ const Navbar = () => {
             {link.label}
           </a>
         ))}
-        <a className="btn btn--primary btn--sm" href="#contact" onClick={handleClose}>
+        <a
+          className="btn btn--primary btn--sm contactButton"
+          href="#contact"
+          onClick={handleClose}
+        >
           Contact
         </a>
       </nav>

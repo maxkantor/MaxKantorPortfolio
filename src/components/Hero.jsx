@@ -1,7 +1,9 @@
 ﻿const Hero = () => {
   return (
-    <section id="home" className="section hero">
-      <div className="container hero__content">
+    <section id="home" className="hero">
+      <div className="heroBg" aria-hidden="true" />
+      <div className="heroOverlay" aria-hidden="true" />
+      <div className="heroContent">
         <p className="eyebrow">Software Engineering Leader</p>
         <h1>Max Kantor</h1>
         <h2>Software Engineering Leader | AI + Cloud & Full-Stack Delivery (AWS)</h2>
