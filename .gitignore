@@ -1,0 +1,9 @@
+node_modules/
+app/node_modules/
+backend/contact-ses/node_modules/
+infra/cdk/node_modules/
+.env
+app/.env
+app/.env.*
+dist/
+.DS_Store
