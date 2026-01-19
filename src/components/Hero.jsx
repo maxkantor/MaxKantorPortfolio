@@ -1,9 +1,7 @@
 ﻿const Hero = () => {
   return (
     <section id="home" className="hero">
-      <div className="heroMedia" aria-hidden="true" />
-      <div className="heroOverlay" aria-hidden="true" />
-      <div className="heroContainer">
+      <div className="heroLeft">
         <div className="heroContent">
         <p className="eyebrow">Software Engineering Leader</p>
         <h1>Max Kantor</h1>
@@ -40,6 +38,10 @@
         <p className="hero__status">Open to Engineering Leadership opportunities</p>
         <p className="hero__trust">AWS • .NET • React • Delivery Leadership • AI Integration</p>
         </div>
+      </div>
+
+      <div className="heroRight" aria-hidden="true">
+        <div className="heroBlend" aria-hidden="true"></div>
       </div>
     </section>
   );

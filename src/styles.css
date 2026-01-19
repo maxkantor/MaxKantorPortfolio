@@ -211,50 +211,52 @@ textarea:focus-visible {
 }
 
 .hero {
-  position: relative;
-  min-height: clamp(620px, 74vh, 900px);
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
+  min-height: clamp(640px, 78vh, 920px);
   background: #070a12;
-  display: flex;
-  align-items: center;
   overflow: hidden;
 }
 
-.heroMedia {
-  position: absolute;
-  inset: 0;
-  background-image: url('/hero.jpg');
-  background-repeat: no-repeat;
-  background-size: min(1100px, 92vw) auto;
-  background-position: right center;
-  opacity: 0.95;
-  filter: contrast(1.03) saturate(1.03);
+/* LEFT SIDE */
+.heroLeft {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: #070a12;
 }
 
-.heroOverlay {
+.heroContent {
+  width: min(740px, 92%);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 56px 28px;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* RIGHT SIDE PHOTO PANEL */
+.heroRight {
+  position: relative;
+  background-image: url('/hero.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 60% 35%;
+}
+
+/* SOFT BLEND EDGE */
+.heroBlend {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(7, 10, 18, 0.90) 0%,
-    rgba(7, 10, 18, 0.65) 45%,
-    rgba(7, 10, 18, 0.20) 78%,
-    rgba(7, 10, 18, 0.05) 100%
+    rgba(7, 10, 18, 0.92) 0%,
+    rgba(7, 10, 18, 0.70) 18%,
+    rgba(7, 10, 18, 0.35) 38%,
+    rgba(7, 10, 18, 0.10) 58%,
+    rgba(7, 10, 18, 0.00) 72%
   );
-}
-
-.heroContainer {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 28px;
-}
-
-.heroContent {
-  width: min(720px, 100%);
-  display: grid;
-  gap: 1.1rem;
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -712,28 +714,55 @@ main section {
   }
 }
 
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 760px;
+  }
+
+  .heroRight {
+    min-height: 340px;
+    background-position: 60% 20%;
+  }
+
+  .heroBlend {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 10, 18, 0.00) 0%,
+      rgba(7, 10, 18, 0.30) 35%,
+      rgba(7, 10, 18, 0.78) 78%,
+      rgba(7, 10, 18, 0.92) 100%
+    );
+  }
+
+  .heroLeft {
+    order: 1;
+  }
+
+  .heroRight {
+    order: 2;
+  }
+
+  .heroContent {
+    width: 92%;
+    padding: 44px 18px;
+  }
+}
+
 @media (max-width: 600px) {
   .hero {
     min-height: 720px;
-    align-items: flex-start;
-    padding-top: 72px;
+    grid-template-columns: 1fr;
   }
 
-  .heroMedia {
-    background-size: cover;
-    background-position: center top;
-  }
-
-  .heroOverlay {
-    background: rgba(7, 10, 18, 0.72);
-  }
-
-  .heroContainer {
-    padding: 0 18px;
+  .heroRight {
+    min-height: 340px;
+    background-position: 60% 20%;
   }
 
   .heroContent {
     width: 100%;
+    padding: 36px 18px;
   }
 
   .hero__actions {
