@@ -1,7 +1,7 @@
 ﻿const Hero = () => {
   return (
     <section id="home" className="hero">
-      <div className="heroBg" aria-hidden="true" />
+      <div className="heroMedia" aria-hidden="true" />
       <div className="heroOverlay" aria-hidden="true" />
       <div className="heroContainer">
         <div className="heroContent">

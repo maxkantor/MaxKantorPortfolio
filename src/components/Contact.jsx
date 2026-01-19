@@ -83,7 +83,11 @@ const Contact = () => {
                 linkedin.com/in/maxim-kantor-0a423125
               </a>
             </p>
-            <a className="btn btn--primary btn--sm" href="/Max-Kantor-Resume.pdf" download>
+            <a
+              className="btn btn--primary btn--sm resumeButton"
+              href="/Max-Kantor-Resume.pdf"
+              download
+            >
               Download Resume
             </a>
           </div>

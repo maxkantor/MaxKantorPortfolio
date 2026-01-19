@@ -26,9 +26,7 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a className="btn btn--primary btn--sm contactButton" href="#contact">
-            Contact
-          </a>
+          <a href="#contact">Contact</a>
         </nav>
         <button
           className="navbar__toggle"
@@ -53,11 +51,7 @@ const Navbar = () => {
             {link.label}
           </a>
         ))}
-        <a
-          className="btn btn--primary btn--sm contactButton"
-          href="#contact"
-          onClick={handleClose}
-        >
+        <a href="#contact" onClick={handleClose}>
           Contact
         </a>
       </nav>
