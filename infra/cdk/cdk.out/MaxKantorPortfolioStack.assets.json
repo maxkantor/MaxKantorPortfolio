@@ -1,0 +1,36 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219": {
+      "displayName": "ContactSesFunction/Code",
+      "source": {
+        "path": "asset.330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "718522948657-us-east-1-b9051626": {
+          "bucketName": "cdk-hnb659fds-assets-718522948657-us-east-1",
+          "objectKey": "330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::718522948657:role/cdk-hnb659fds-file-publishing-role-718522948657-us-east-1"
+        }
+      }
+    },
+    "8f8d6c53ecdda3f770d4d0935a55362af3ce44cc0d56d7a192642cdda680e893": {
+      "displayName": "MaxKantorPortfolioStack Template",
+      "source": {
+        "path": "MaxKantorPortfolioStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "718522948657-us-east-1-e620aa98": {
+          "bucketName": "cdk-hnb659fds-assets-718522948657-us-east-1",
+          "objectKey": "8f8d6c53ecdda3f770d4d0935a55362af3ce44cc0d56d7a192642cdda680e893.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::718522948657:role/cdk-hnb659fds-file-publishing-role-718522948657-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -1,0 +1,313 @@
+{
+ "Parameters": {
+  "SesFromEmail": {
+   "Type": "String",
+   "Default": "",
+   "Description": "Verified SES sender email address."
+  },
+  "SesToEmail": {
+   "Type": "String",
+   "Default": "mykantor@bellsouth.net",
+   "Description": "Recipient email address."
+  },
+  "AllowedOrigins": {
+   "Type": "String",
+   "Default": "http://localhost:5173",
+   "Description": "Comma-separated list of allowed origins for CORS."
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Conditions": {
+  "CreateSesIdentity": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "SesFromEmail"
+      },
+      ""
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "SesEmailIdentity": {
+   "Type": "AWS::SES::EmailIdentity",
+   "Properties": {
+    "EmailIdentity": {
+     "Ref": "SesFromEmail"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/SesEmailIdentity"
+   },
+   "Condition": "CreateSesIdentity"
+  },
+  "ContactSesFunctionServiceRole1D42F7B7": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactSesFunction/ServiceRole/Resource"
+   }
+  },
+  "ContactSesFunctionServiceRoleDefaultPolicy5D04DD36": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ContactSesFunctionServiceRoleDefaultPolicy5D04DD36",
+    "Roles": [
+     {
+      "Ref": "ContactSesFunctionServiceRole1D42F7B7"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactSesFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ContactSesFunction5B0CCE49": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-718522948657-us-east-1",
+     "S3Key": "330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "SES_FROM_EMAIL": {
+       "Ref": "SesFromEmail"
+      },
+      "SES_TO_EMAIL": {
+       "Ref": "SesToEmail"
+      },
+      "ALLOWED_ORIGINS": {
+       "Ref": "AllowedOrigins"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "ContactSesFunctionServiceRole1D42F7B7",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "ContactSesFunctionServiceRoleDefaultPolicy5D04DD36",
+    "ContactSesFunctionServiceRole1D42F7B7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactSesFunction/Resource",
+    "aws:asset:path": "asset.330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ContactHttpApiCBB18CE3": {
+   "Type": "AWS::ApiGatewayV2::Api",
+   "Properties": {
+    "CorsConfiguration": {
+     "AllowHeaders": [
+      "Content-Type"
+     ],
+     "AllowMethods": [
+      "POST",
+      "OPTIONS"
+     ],
+     "AllowOrigins": [
+      {
+       "Ref": "AllowedOrigins"
+      }
+     ]
+    },
+    "Name": "ContactHttpApi",
+    "ProtocolType": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactHttpApi/Resource"
+   }
+  },
+  "ContactHttpApiDefaultStage7E08B45E": {
+   "Type": "AWS::ApiGatewayV2::Stage",
+   "Properties": {
+    "ApiId": {
+     "Ref": "ContactHttpApiCBB18CE3"
+    },
+    "AutoDeploy": true,
+    "StageName": "$default"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactHttpApi/DefaultStage/Resource"
+   }
+  },
+  "ContactHttpApiPOSTcontactContactLambdaIntegration0B736510": {
+   "Type": "AWS::ApiGatewayV2::Integration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "ContactHttpApiCBB18CE3"
+    },
+    "IntegrationType": "AWS_PROXY",
+    "IntegrationUri": {
+     "Fn::GetAtt": [
+      "ContactSesFunction5B0CCE49",
+      "Arn"
+     ]
+    },
+    "PayloadFormatVersion": "2.0"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactHttpApi/POST--contact/ContactLambdaIntegration/Resource"
+   }
+  },
+  "ContactHttpApiPOSTcontactContactLambdaIntegrationPermissionE366CE26": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ContactSesFunction5B0CCE49",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:718522948657:",
+       {
+        "Ref": "ContactHttpApiCBB18CE3"
+       },
+       "/*/*/contact"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactHttpApi/POST--contact/ContactLambdaIntegration-Permission"
+   }
+  },
+  "ContactHttpApiPOSTcontactBCECEE1B": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "ContactHttpApiCBB18CE3"
+    },
+    "AuthorizationType": "NONE",
+    "RouteKey": "POST /contact",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "ContactHttpApiPOSTcontactContactLambdaIntegration0B736510"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/ContactHttpApi/POST--contact/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OUW6DQAxEz5L/xW1AOUCCWjVfReQAkQMGOcAuwt4ghLh7tYsqVf16M/Z45BTS7ATHA86SVHWX9PyA9aZYdSZvbIETDqQ0BZM7W7OyswZnua9CAnljPwbk/lqTVdbF9Dg8aoT109sqRvPG/tUFTQOLsLObYRxgLV1PYRFZuJ6rJeai2oxkdxQhFTgHGMng4quO9IJCBkduUWnG5ZXC+qU6nkcO5wHB3hTbWL+LMCqd111drVI74e9r/2zMbZspSZyfKjLxgdDDtg2Bb6+j181YVxM85e2VpnA8wfvhKczJ5K3yQFDu/AHCJJ1uZwEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "MaxKantorPortfolioStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ContactApiUrl": {
+   "Value": {
+    "Fn::GetAtt": [
+     "ContactHttpApiCBB18CE3",
+     "ApiEndpoint"
+    ]
+   }
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
