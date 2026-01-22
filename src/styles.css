@@ -281,21 +281,29 @@ textarea:focus-visible {
 .heroBadge {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border-radius: 999px;
   background: rgba(108, 213, 255, 0.08);
   border: 1px solid rgba(108, 213, 255, 0.2);
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   width: fit-content;
+  max-width: 520px;
 }
 
 .heroBadgeText {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: clamp(1.0rem, 0.35vw + 0.95rem, 1.2rem);
+  font-weight: 800;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: rgba(190, 242, 255, 0.95);
+}
+
+/* Desktop-only: align portrait panel a bit higher (keep mobile unchanged) */
+@media (min-width: 900px) {
+  .heroRight {
+    transform: translateY(-28px);
+  }
 }
 
 /* Tech chips row */
@@ -1217,16 +1225,6 @@ main section {
     width: 100%;
     margin-right: auto;
     padding: 48px 20px 32px 20px;
-  }
-  
-  .hero__badge {
-    padding: 6px 11px;
-    font-size: 0.65rem;
-    gap: 6px;
-  }
-  
-  .hero__badge-icon {
-    font-size: 0.9rem;
   }
   
   .hero__chips {
