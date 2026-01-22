@@ -3,9 +3,8 @@
     <section id="home" className="hero">
       <div className="heroLeft">
         <div className="heroContent">
-        <div className="hero__badge">
-          <span className="hero__badge-icon">🚀</span>
-          <span>SOFTWARE ENGINEERING LEADER</span>
+        <div className="heroBadge">
+          <span className="heroBadgeText">🚀 SOFTWARE ENGINEERING LEADER</span>
         </div>
         
         <div className="hero__chips">
