@@ -5,14 +5,11 @@
         <div className="footer__left">
           <p className="footer__name">Max Kantor</p>
           <p className="footer__tagline">Software Engineering Leader • AI + Cloud • AWS</p>
-          <p className="footer__copyright">© 2026 Max Kantor</p>
         </div>
 
+        <div className="footer__center">© 2026 Max Kantor</div>
+
         <nav className="footer__right" aria-label="Footer links">
-          <a className="footer__link" href="/MaxKantor_Resume.pdf" target="_blank" rel="noreferrer">
-            Resume
-          </a>
-          <span className="footer__dot" aria-hidden="true">•</span>
           <a className="footer__link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
             LinkedIn
           </a>

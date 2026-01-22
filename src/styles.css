@@ -306,7 +306,7 @@ textarea:focus-visible {
 
 @media (min-width: 1100px) {
   .heroRight { transform: none; margin-top: 0; top: auto; }
-  .portraitOffset { transform: translateY(-12px); }
+  .portraitOffset { transform: translateY(-6px); }
 }
 
 .portraitOffset {
@@ -1091,12 +1091,13 @@ button[type='submit'] {
   line-height: 1.25;
 }
 
-.footer__copyright {
-  margin: 0;
-  margin-top: 0.15rem;
+.footer__center {
+  flex: 1;
+  text-align: center;
   font-size: 0.75rem;
   color: rgba(178, 185, 204, 0.8);
   line-height: 1.2;
+  padding: 0 1rem;
 }
 
 .footer__right {
@@ -1143,6 +1144,11 @@ button[type='submit'] {
     align-items: center;
     text-align: center;
     gap: 0.85rem;
+  }
+
+  .footer__center {
+    order: 3;
+    padding: 0;
   }
 
   .footer__right {
@@ -1210,6 +1216,11 @@ main section {
   .footer {
     padding: 2.5rem 0 2rem;
     margin-top: 3rem;
+  }
+
+  .footer__center {
+    flex: 0 0 auto;
+    padding: 0;
   }
 }
 
