@@ -1065,7 +1065,7 @@ button[type='submit'] {
 
 .footer__inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
 }
@@ -1097,12 +1097,12 @@ button[type='submit'] {
   font-size: 0.75rem;
   color: rgba(178, 185, 204, 0.8);
   line-height: 1.2;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .footer__right {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.55rem;
   flex-wrap: wrap;
   justify-content: flex-end;
