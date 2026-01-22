@@ -231,9 +231,9 @@ textarea:focus-visible {
   width: min(780px, 94%);
   margin-left: auto;
   margin-right: 48px;
-  padding: 64px 32px;
+  padding: 64px 40px;
   display: grid;
-  gap: 1.35rem;
+  gap: 1.5rem;
 }
 
 /* RIGHT SIDE PHOTO PANEL */
@@ -342,12 +342,13 @@ textarea:focus-visible {
 
 /* Trust signal line */
 .hero__trust-signal {
-  font-size: clamp(0.875rem, 0.5vw + 0.75rem, 0.95rem);
+  font-size: clamp(0.95rem, 0.35vw + 0.85rem, 1.10rem); /* 15.2px → 17.6px at 1440px: 16.9px */
   color: rgba(178, 185, 204, 0.92);
   font-weight: 550;
-  line-height: 1.5;
-  margin-top: 0.25rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
   letter-spacing: 0.015em;
+  opacity: 0.9;
 }
 
 .eyebrow {
@@ -365,31 +366,34 @@ textarea:focus-visible {
 }
 
 .hero h2 {
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-size: clamp(1.35rem, 1.2vw + 1.05rem, 2.05rem); /* 21.6px → 32.8px at 1440px: 28.3px */
   font-weight: 500;
   color: var(--muted);
   max-width: 680px;
-  line-height: 1.5;
-  margin-top: -0.25rem;
+  line-height: 1.15;
+  margin-top: 0.15rem;
 }
 
 .hero__summary {
-  max-width: 620px;
-  font-size: clamp(1rem, 1.1vw + 0.85rem, 1.25rem);
-  line-height: 1.72;
+  max-width: 52ch;
+  font-size: clamp(1.10rem, 0.65vw + 0.95rem, 1.40rem); /* 17.6px → 22.4px at 1440px: 21.3px */
+  line-height: 1.75;
   color: rgba(246, 247, 251, 0.95);
   font-weight: 400;
+  margin-top: 0.35rem;
 }
 
 .hero__bullets {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem 1.75rem;
+  row-gap: 10px;
+  column-gap: 1.75rem;
   max-width: 680px;
   color: rgba(178, 185, 204, 0.95);
-  font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.05rem);
+  font-size: clamp(1.00rem, 0.40vw + 0.90rem, 1.15rem); /* 16px → 18.4px at 1440px: 17.7px */
   line-height: 1.6;
+  margin-top: 0.5rem;
 }
 
 .hero__leadership {
@@ -414,7 +418,7 @@ textarea:focus-visible {
 .hero__bullets li {
   position: relative;
   padding-left: 1.2rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .hero__bullets li::before {
