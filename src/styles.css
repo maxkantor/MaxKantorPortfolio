@@ -213,6 +213,7 @@ textarea:focus-visible {
 .hero {
   display: grid;
   grid-template-columns: 1.3fr 0.85fr;
+  align-items: start;
   min-height: clamp(600px, 72vh, 840px);
   background: #070a12;
   overflow: hidden;
