@@ -342,12 +342,12 @@ textarea:focus-visible {
 
 /* Trust signal line */
 .hero__trust-signal {
-  font-size: 0.88rem;
-  color: var(--muted);
-  font-weight: 500;
+  font-size: clamp(0.875rem, 0.5vw + 0.75rem, 0.95rem);
+  color: rgba(178, 185, 204, 0.92);
+  font-weight: 550;
   line-height: 1.5;
   margin-top: 0.25rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.015em;
 }
 
 .eyebrow {
@@ -375,19 +375,21 @@ textarea:focus-visible {
 
 .hero__summary {
   max-width: 620px;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text);
+  font-size: clamp(1rem, 1.1vw + 0.85rem, 1.25rem);
+  line-height: 1.72;
+  color: rgba(246, 247, 251, 0.95);
+  font-weight: 400;
 }
 
 .hero__bullets {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem 1.75rem;
+  gap: 0.85rem 1.75rem;
   max-width: 680px;
-  color: var(--muted);
-  font-size: 0.94rem;
+  color: rgba(178, 185, 204, 0.95);
+  font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.05rem);
+  line-height: 1.6;
 }
 
 .hero__leadership {
@@ -434,7 +436,8 @@ textarea:focus-visible {
 .hero__status {
   color: var(--accent);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 0.5vw + 0.8rem, 1rem);
+  letter-spacing: 0.005em;
 }
 
 .hero__trust {
