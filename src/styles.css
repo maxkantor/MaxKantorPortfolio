@@ -299,8 +299,8 @@ textarea:focus-visible {
   color: rgba(190, 242, 255, 0.95);
 }
 
-/* Desktop-only: align portrait panel a bit higher (keep mobile unchanged) */
-@media (min-width: 900px) {
+/* Desktop-only: align portrait panel a bit higher (keep tablet/mobile unchanged) */
+@media (min-width: 1100px) {
   .heroRight {
     transform: translateY(-28px);
   }
