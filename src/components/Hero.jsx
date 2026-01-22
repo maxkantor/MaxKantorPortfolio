@@ -3,15 +3,32 @@
     <section id="home" className="hero">
       <div className="heroLeft">
         <div className="heroContent">
-        <p className="eyebrow">Software Engineering Leader</p>
+        <div className="hero__badge">
+          <span className="hero__badge-icon">🚀</span>
+          <span>SOFTWARE ENGINEERING LEADER</span>
+        </div>
+        
+        <div className="hero__chips">
+          <span className="hero__chip">AWS</span>
+          <span className="hero__chip">.NET</span>
+          <span className="hero__chip">React</span>
+          <span className="hero__chip">AI/LLMs</span>
+          <span className="hero__chip">Leadership</span>
+        </div>
+        
         <h1>Max Kantor</h1>
         <h2>Software Engineering Leader | AI + Cloud & Full-Stack Delivery (AWS)</h2>
         <p className="hero__summary">
-          I’m a software engineering leader with hands-on strength in AWS and full-stack
+          I'm a software engineering leader with hands-on strength in AWS and full-stack
           delivery. I lead teams, drive execution, and ship production systems end-to-end —
           from architecture and roadmap planning to reliable deployment, monitoring, and
           growth.
         </p>
+        
+        <p className="hero__trust-signal">
+          Teams 5–15+ • AWS production delivery • Open to Engineering Leadership roles
+        </p>
+        
         <ul className="hero__bullets">
           <li>Engineering leadership & mentoring (teams 5–15+)</li>
           <li>Cloud architecture (AWS: Amplify, Lambda, API Gateway, DynamoDB, CloudWatch)</li>
@@ -36,7 +53,6 @@
           </a>
         </div>
         <p className="hero__status">Open to Engineering Leadership opportunities</p>
-        <p className="hero__trust">AWS • .NET • React • Delivery Leadership • AI Integration</p>
         </div>
       </div>
 
