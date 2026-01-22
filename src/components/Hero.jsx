@@ -40,7 +40,11 @@
         </div>
       </div>
 
-      <div className="heroRight" aria-hidden="true"></div>
+      <div 
+        className="heroRight" 
+        role="img" 
+        aria-label="Max Kantor - Software Engineering Leader"
+      ></div>
     </section>
   );
 };
