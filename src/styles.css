@@ -1036,39 +1036,114 @@ button[type='submit'] {
 }
 
 .footer {
-  padding: 3rem 0 2rem;
-  border-top: 1px solid var(--divider);
+  padding: 1.1rem 0;
+  margin-top: 2.5rem;
   background: var(--bg-alt);
-  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108, 213, 255, 0.18),
+    transparent
+  );
+  pointer-events: none;
 }
 
 .footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer__left {
   display: grid;
-  gap: 0.375rem;
-  text-align: left;
+  gap: 0.2rem;
 }
 
-.footer__title {
+.footer__name {
   margin: 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.4;
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: rgba(246, 247, 251, 0.95);
+  line-height: 1.2;
 }
 
-.footer__subtitle {
+.footer__tagline {
   margin: 0;
-  font-size: 0.8125rem;
-  color: var(--muted);
-  line-height: 1.4;
+  font-size: 0.8rem;
+  color: rgba(178, 185, 204, 0.9);
+  line-height: 1.25;
 }
 
 .footer__copyright {
   margin: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.15rem;
   font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.4;
+  color: rgba(178, 185, 204, 0.8);
+  line-height: 1.2;
+}
+
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.footer__link {
+  color: rgba(178, 185, 204, 0.9);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: rgba(246, 247, 251, 0.95);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.footer__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.footer__dot {
+  color: rgba(178, 185, 204, 0.45);
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 1.25rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .footer__right {
+    justify-content: center;
+  }
 }
 
 .btn--secondary {
