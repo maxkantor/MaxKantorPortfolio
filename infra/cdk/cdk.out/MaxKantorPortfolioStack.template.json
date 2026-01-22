@@ -114,7 +114,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-718522948657-us-east-1",
-     "S3Key": "330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219.zip"
+     "S3Key": "c14b2994e43538e5b9e59648bee486da625990a4349b7b4c721ad263295a1872.zip"
     },
     "Environment": {
      "Variables": {
@@ -146,7 +146,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MaxKantorPortfolioStack/ContactSesFunction/Resource",
-    "aws:asset:path": "asset.330cabd6662763577e834bd6bf5824e3e0db85c7ec58e8e227a8bdfbeca3d219",
+    "aws:asset:path": "asset.c14b2994e43538e5b9e59648bee486da625990a4349b7b4c721ad263295a1872",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -266,7 +266,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OUW6DQAxEz5L/xW1AOUCCWjVfReQAkQMGOcAuwt4ghLh7tYsqVf16M/Z45BTS7ATHA86SVHWX9PyA9aZYdSZvbIETDqQ0BZM7W7OyswZnua9CAnljPwbk/lqTVdbF9Dg8aoT109sqRvPG/tUFTQOLsLObYRxgLV1PYRFZuJ6rJeai2oxkdxQhFTgHGMng4quO9IJCBkduUWnG5ZXC+qU6nkcO5wHB3hTbWL+LMCqd111drVI74e9r/2zMbZspSZyfKjLxgdDDtg2Bb6+j181YVxM85e2VpnA8wfvhKczJ5K3yQFDu/AHCJJ1uZwEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OUW6DQAxEz5L/jVugPUCCWjVfReQAkQMGOcAuwt4ghLh7tYsqVf16M/Z45BTS7B2SA85yrOru2PMd1qti1Zm8sQVOOJDSFEzubM3Kzhqc5bYKCeSN/RiQ+0tNVlkX0+NwrxHWT2+rGM0b+1cXNA0sws5uhnGAtXQ9hUVk4XqulpiLajOS3VCEVOAUYCSDs6860jMKGRy5RaUZl2cK65fqeBo5nAcEe1VsY/0uwqh0Xnd1sUrthL+v/bMxt22mJHF+qsjEB0IP2zYEvr2OXjdjXU3wkJdn+gZJAq+HhzAfJ2+VB4Jy5w9a58K7ZwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "MaxKantorPortfolioStack/CDKMetadata/Default"
