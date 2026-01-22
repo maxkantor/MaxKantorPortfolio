@@ -240,16 +240,20 @@ textarea:focus-visible {
 /* RIGHT SIDE PHOTO PANEL */
 .heroRight {
   position: relative;
+  z-index: 1;
+}
+
+.heroRight__image {
+  position: relative;
   background-image: url('/hero.jpg');
   background-repeat: no-repeat;
   background-size: 72% auto;
   background-position: 55% 28%;
   background-color: #070a12;
-  z-index: 1;
 }
 
 /* STRONGER GRADIENT OVERLAY - makes portrait supportive, not dominant */
-.heroRight::before {
+.heroRight__image::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -266,7 +270,7 @@ textarea:focus-visible {
 }
 
 /* Subtle vignette to further soften the portrait */
-.heroRight::after {
+.heroRight__image::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -301,15 +305,15 @@ textarea:focus-visible {
 }
 
 @media (min-width: 1100px) {
-  .portraitCardWrap { transform: translateY(-16px); }
+  .heroRight { transform: none; margin-top: 0; top: auto; }
+  .portraitOffset { transform: translateY(-12px); }
 }
 
-.portraitCardWrap {
-  display: block;
+.portraitOffset {
   overflow: visible;
 }
 
-.portraitCardWrap .heroRight {
+.portraitOffset .heroRight__image {
   width: 100%;
   min-height: clamp(600px, 72vh, 840px);
 }
@@ -1228,7 +1232,7 @@ main section {
 }
 
 @media (min-width: 1400px) {
-  .heroRight {
+  .heroRight__image {
     background-size: 70% auto;
     background-position: 52% 28%;
   }
@@ -1245,7 +1249,7 @@ main section {
     min-height: clamp(560px, 68vh, 760px);
   }
   
-  .heroRight {
+  .heroRight__image {
     background-size: 68% auto;
     background-position: 50% 28%;
   }
@@ -1276,7 +1280,7 @@ main section {
     order: 1;
   }
 
-  .heroRight {
+  .heroRight__image {
     order: 2;
     min-height: 280px;
     background-size: 85% auto;
@@ -1286,7 +1290,7 @@ main section {
     overflow: hidden;
   }
 
-  .heroRight::before {
+  .heroRight__image::before {
     background: linear-gradient(
       180deg,
       rgba(7, 10, 18, 0.15) 0%,
@@ -1296,7 +1300,7 @@ main section {
     );
   }
   
-  .heroRight::after {
+  .heroRight__image::after {
     background: radial-gradient(
       ellipse 70% 100% at 50% 50%,
       transparent 0%,

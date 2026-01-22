@@ -55,12 +55,14 @@
         </div>
       </div>
 
-      <div className="portraitCardWrap">
-        <div 
-          className="heroRight" 
-          role="img" 
-          aria-label="Max Kantor - Software Engineering Leader"
-        ></div>
+      <div className="heroRight">
+        <div className="portraitOffset">
+          <div
+            className="heroRight__image"
+            role="img"
+            aria-label="Max Kantor - Software Engineering Leader"
+          ></div>
+        </div>
       </div>
     </section>
   );
