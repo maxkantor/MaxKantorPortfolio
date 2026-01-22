@@ -305,7 +305,13 @@ textarea:focus-visible {
 }
 
 .portraitCardWrap {
+  display: block;
   overflow: visible;
+}
+
+.portraitCardWrap .heroRight {
+  width: 100%;
+  min-height: clamp(600px, 72vh, 840px);
 }
 
 /* Tech chips row */
