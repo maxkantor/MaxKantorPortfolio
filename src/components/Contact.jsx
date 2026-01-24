@@ -51,9 +51,9 @@ const Contact = () => {
 
     setIsTyping(true);
     debounceTimer.current = setTimeout(() => {
-      setIsTyping(false);
       const isValid = validateForm();
-      setCanSubmit(isValid && !isTyping);
+      setCanSubmit(isValid);
+      setIsTyping(false);
     }, 800);
 
     return () => {
