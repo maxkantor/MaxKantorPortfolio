@@ -17,17 +17,37 @@ const response = (statusCode, body, origin) => ({
   body: JSON.stringify(body),
 });
 
-const isAllowedOrigin = (origin, allowlist) =>
-  allowlist.some((allowed) => allowed === origin);
+const DEFAULT_ALLOWED_ORIGINS = [
+  'http://localhost:5173',
+  'https://maxkantorportfolio.com',
+  'https://www.maxkantorportfolio.com',
+];
+
+const isAmplifyPreviewOrigin = (origin) =>
+  /^https:\/\/[a-z0-9-]+\.[a-z0-9-]+\.amplifyapp\.com$/i.test(origin);
+
+const parseOrigins = (raw) =>
+  String(raw || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+const isAllowedOrigin = (origin, allowlist) => {
+  if (!origin) return false;
+  if (allowlist.includes(origin)) return true;
+  return isAmplifyPreviewOrigin(origin);
+};
 
 const isValidEmail = (value) => /\S+@\S+\.\S+/.test(value);
 
 exports.handler = async (event) => {
   const origin = event.headers?.origin || event.headers?.Origin || '';
-  const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
-    .split(',')
-    .map((value) => value.trim())
-    .filter(Boolean);
+  const allowedOrigins = Array.from(
+    new Set([
+      ...DEFAULT_ALLOWED_ORIGINS,
+      ...parseOrigins(process.env.ALLOWED_ORIGINS),
+    ])
+  );
 
   const allowOrigin = isAllowedOrigin(origin, allowedOrigins) ? origin : '';
 
@@ -73,11 +93,16 @@ exports.handler = async (event) => {
   recent.push(now);
   rateLimit.set(ip, recent);
 
-  const fromEmail = process.env.SES_FROM_EMAIL;
+  const fromEmail = String(process.env.SES_FROM_EMAIL || '').trim();
+  const sourceName = String(process.env.SES_SOURCE_NAME || 'Max Kantor Portfolio').trim();
   const toEmail = process.env.SES_TO_EMAIL || 'mykantor@bellsouth.net';
 
   if (!fromEmail) {
     return response(500, { ok: false, error: 'Sender email not configured.' }, allowOrigin);
+  }
+
+  if (!isValidEmail(fromEmail)) {
+    return response(500, { ok: false, error: 'Sender email is invalid.' }, allowOrigin);
   }
 
   const subject = `Portfolio Contact from ${name}`;
@@ -130,8 +155,8 @@ This message was sent via your portfolio contact form at maxkantorportfolio.com`
             Html: { Data: bodyHtml, Charset: 'UTF-8' }
           },
         },
-        Source: `${name} via Portfolio <${fromEmail}>`,
-        ReplyToAddresses: [email],
+        Source: `${sourceName} <${fromEmail}>`,
+        ReplyToAddresses: isValidEmail(email) ? [email] : undefined,
       })
     );
 
