@@ -16,16 +16,16 @@
         }
       }
     },
-    "86f25304df082f286abdc680096f770580ab2c15f88041032770bda82debcf36": {
+    "90a1fad37f400d13120294416aaebae662e4989e98a9216d9c8d28965c6d59b7": {
       "displayName": "MaxKantorPortfolioStack Template",
       "source": {
         "path": "MaxKantorPortfolioStack.template.json",
         "packaging": "file"
       },
       "destinations": {
-        "718522948657-us-east-1-88cbd486": {
+        "718522948657-us-east-1-8da86b74": {
           "bucketName": "cdk-hnb659fds-assets-718522948657-us-east-1",
-          "objectKey": "86f25304df082f286abdc680096f770580ab2c15f88041032770bda82debcf36.json",
+          "objectKey": "90a1fad37f400d13120294416aaebae662e4989e98a9216d9c8d28965c6d59b7.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::718522948657:role/cdk-hnb659fds-file-publishing-role-718522948657-us-east-1"
         }

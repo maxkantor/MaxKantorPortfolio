@@ -137,9 +137,9 @@
       "OPTIONS"
      ],
      "AllowOrigins": [
-      {
-       "Ref": "AllowedOrigins"
-      }
+      "https://maxkantorportfolio.com",
+      "https://www.maxkantorportfolio.com",
+      "http://localhost:5173"
      ]
     },
     "Name": "ContactHttpApi",

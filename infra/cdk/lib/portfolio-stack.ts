@@ -54,7 +54,7 @@ export class PortfolioStack extends cdk.Stack {
       corsPreflight: {
         allowHeaders: ['Content-Type'],
         allowMethods: [apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
-        allowOrigins: allowedOrigins.valueAsString.split(',').map((o) => o.trim()),
+        allowOrigins: ['https://maxkantorportfolio.com', 'https://www.maxkantorportfolio.com', 'http://localhost:5173'],
       },
     });
 
