@@ -1,12 +1,80 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 
+const PRESET_CHIPS = [
+  {
+    id: 'manager',
+    label: 'Software Engineering Manager role',
+    template: "Hi Max — I'd like to discuss a Software Engineering Manager opportunity at [Company]. Are you open to a quick conversation this week? Here's some context: …",
+  },
+  {
+    id: 'leadership',
+    label: 'Software Engineering Leadership opportunity',
+    template: "Hi Max — we're exploring a Software Engineering Leadership opportunity at [Company] and your background stood out. Would you be open to a brief conversation? Context: …",
+  },
+  {
+    id: 'intro',
+    label: 'Quick intro / networking',
+    template: "Hi Max — I came across your profile and would love to connect. If you're open, I'd appreciate a quick intro chat. …",
+  },
+];
+
+const PresetChips = ({ selectedChip, onChipClick }) => {
+  return (
+    <div className="contact-form__presets">
+      <span className="contact-form__presets-label">Start with a template</span>
+      <div className="contact-form__chips">
+        {PRESET_CHIPS.map((chip) => (
+          <button
+            key={chip.id}
+            type="button"
+            className={`contact-form__chip ${selectedChip === chip.id ? 'contact-form__chip--active' : ''}`}
+            onClick={() => onChipClick(chip.id)}
+            aria-pressed={selectedChip === chip.id}
+            title={chip.label}
+          >
+            {chip.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ConfirmReplace = ({ onConfirm, onCancel }) => {
+  return (
+    <div className="contact-form__confirm-modal">
+      <p>Replace your current message with this template?</p>
+      <div className="contact-form__confirm-actions">
+        <button
+          type="button"
+          className="contact-form__confirm-btn contact-form__confirm-btn--primary"
+          onClick={onConfirm}
+        >
+          Replace
+        </button>
+        <button
+          type="button"
+          className="contact-form__confirm-btn contact-form__confirm-btn--secondary"
+          onClick={onCancel}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const Contact = () => {
   const [status, setStatus] = useState({ state: 'idle', message: '' });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
   const [isTyping, setIsTyping] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [selectedChip, setSelectedChip] = useState(null);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [pendingChipId, setPendingChipId] = useState(null);
   const debounceTimer = useRef(null);
+  const textareaRef = useRef(null);
 
   // Validation functions
   const validateEmail = (email) => {
@@ -68,6 +136,41 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handlePresetChip = (chipId) => {
+    const chip = PRESET_CHIPS.find((c) => c.id === chipId);
+    if (!chip) return;
+
+    // If textarea is empty, apply template without confirmation
+    if (formData.message.trim() === '') {
+      setFormData((prev) => ({ ...prev, message: chip.template }));
+      setSelectedChip(chipId);
+      // Focus textarea after state updates
+      setTimeout(() => textareaRef.current?.focus(), 0);
+      return;
+    }
+
+    // If textarea has content, show confirmation
+    setPendingChipId(chipId);
+    setShowConfirm(true);
+  };
+
+  const confirmReplace = () => {
+    if (!pendingChipId) return;
+    const chip = PRESET_CHIPS.find((c) => c.id === pendingChipId);
+    if (chip) {
+      setFormData((prev) => ({ ...prev, message: chip.template }));
+      setSelectedChip(pendingChipId);
+      setTimeout(() => textareaRef.current?.focus(), 0);
+    }
+    setShowConfirm(false);
+    setPendingChipId(null);
+  };
+
+  const cancelReplace = () => {
+    setShowConfirm(false);
+    setPendingChipId(null);
+  };
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText('mykantor@bellsouth.net');
@@ -115,10 +218,14 @@ const Contact = () => {
     try {
       const url = `${apiBase.replace(/\/$/, '')}/contact`;
       console.log('Sending to:', url);
+      
+      // Generate subject line
+      const subject = `Portfolio Contact — ${name} (${email})`;
+      
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, subject }),
       });
       const data = await response.json().catch(() => ({}));
       console.log('Response:', response.status, data);
@@ -248,7 +355,7 @@ const Contact = () => {
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="contact-form__header">
-              <h3>Send a message <span className="contact-form__promise">· I reply within 24–48 hours</span></h3>
+              <h3>Send a message <span className="contact-form__promise">· Typically responds within 24 hours</span></h3>
             </div>
 
             <div className="contact-form__row">
@@ -300,9 +407,14 @@ const Contact = () => {
               <input name="companyWebsite" type="text" tabIndex="-1" autoComplete="off" />
             </label>
 
+            <PresetChips selectedChip={selectedChip} onChipClick={handlePresetChip} />
+
+            {showConfirm && <ConfirmReplace onConfirm={confirmReplace} onCancel={cancelReplace} />}
+
             <label htmlFor="contact-message">
               Message <span aria-label="required">*</span>
               <textarea
+                ref={textareaRef}
                 id="contact-message"
                 name="message"
                 rows="4"
@@ -345,9 +457,11 @@ const Contact = () => {
                   Sending…
                 </>
               ) : (
-                'Send message'
+                'Send message →'
               )}
             </button>
+
+            <p className="contact-form__trust-text">No spam. Your message goes directly to me.</p>
 
             {status.message && (
               <div

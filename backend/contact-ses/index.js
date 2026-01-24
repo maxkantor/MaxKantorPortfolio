@@ -69,6 +69,7 @@ exports.handler = async (event) => {
   const name = String(payload.name || '').trim().slice(0, 100);
   const email = String(payload.email || '').trim().slice(0, 200);
   const message = String(payload.message || '').trim().slice(0, 3000);
+  const subject = String(payload.subject || `Portfolio Contact from ${name}`).trim().slice(0, 200);
 
   if (name.length < 2) {
     return response(400, { ok: false, error: 'Name is required.' }, allowOrigin);
@@ -105,7 +106,6 @@ exports.handler = async (event) => {
     return response(500, { ok: false, error: 'Sender email is invalid.' }, allowOrigin);
   }
 
-  const subject = `Portfolio Contact from ${name}`;
   const bodyText = `You have received a new message from your portfolio contact form.
 
 Name: ${name}

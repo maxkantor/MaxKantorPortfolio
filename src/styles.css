@@ -957,6 +957,122 @@ button[type='submit'] {
   margin-top: -0.125rem;
 }
 
+.contact-form__presets {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+}
+
+.contact-form__presets-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(246, 247, 251, 0.85);
+}
+
+.contact-form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contact-form__chip {
+  background: rgba(108, 213, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(246, 247, 251, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.contact-form__chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(108, 213, 255, 0.12);
+}
+
+.contact-form__chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.contact-form__chip--active {
+  background: var(--accent);
+  color: #071018;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.contact-form__confirm-modal {
+  background: rgba(31, 41, 55, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-form__confirm-modal p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.contact-form__confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact-form__confirm-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: rgba(246, 247, 251, 0.9);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-form__confirm-btn:hover {
+  border-color: var(--accent);
+  background: rgba(108, 213, 255, 0.1);
+  color: var(--accent);
+}
+
+.contact-form__confirm-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.contact-form__confirm-btn--primary {
+  background: var(--accent);
+  color: #071018;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.contact-form__confirm-btn--primary:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.contact-form__trust-text {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  font-weight: 400;
+}
+
 .contact-form__submit {
   width: 100%;
   min-height: 44px;
