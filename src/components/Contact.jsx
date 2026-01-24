@@ -261,104 +261,109 @@ const Contact = () => {
         </div>
         <div className="contact-grid">
           <div className="contact-card">
-            <h3>Let's connect</h3>
-            <div className="contact-info">
-              <div className="contact-info__item">
-                <span className="contact-info__label">Email</span>
-                <a 
-                  href="mailto:mykantor@bellsouth.net" 
-                  className="contact-info__link"
-                  aria-label="Send email to mykantor@bellsouth.net"
-                >
-                  mykantor@bellsouth.net
-                </a>
+            <div className="contact-card__body">
+              <h3>Let's connect</h3>
+              <div className="contact-info">
+                <div className="contact-info__item">
+                  <span className="contact-info__label">Email</span>
+                  <a 
+                    href="mailto:mykantor@bellsouth.net" 
+                    className="contact-info__link"
+                    aria-label="Send email to mykantor@bellsouth.net"
+                  >
+                    mykantor@bellsouth.net
+                  </a>
+                </div>
+                <div className="contact-info__item">
+                  <span className="contact-info__label">GitHub</span>
+                  <a
+                    href="https://github.com/maxkantor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-info__link"
+                    aria-label="Visit Max Kantor's GitHub profile"
+                  >
+                    github.com/maxkantor
+                  </a>
+                </div>
+                <div className="contact-info__item">
+                  <span className="contact-info__label">LinkedIn</span>
+                  <a
+                    href="https://www.linkedin.com/in/maxim-kantor-0a423125/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-info__link"
+                    aria-label="Visit Max Kantor's LinkedIn profile"
+                  >
+                    linkedin.com/in/maxim-kantor-0a423125
+                  </a>
+                </div>
               </div>
-              <div className="contact-info__item">
-                <span className="contact-info__label">GitHub</span>
+              
+              <div className="contact-actions">
                 <a
-                  href="https://github.com/maxkantor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-info__link"
-                  aria-label="Visit Max Kantor's GitHub profile"
+                  href="mailto:mykantor@bellsouth.net"
+                  className="btn btn--secondary btn--sm"
+                  aria-label="Open email client"
                 >
-                  github.com/maxkantor
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  Email me
                 </a>
-              </div>
-              <div className="contact-info__item">
-                <span className="contact-info__label">LinkedIn</span>
-                <a
-                  href="https://www.linkedin.com/in/maxim-kantor-0a423125/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-info__link"
-                  aria-label="Visit Max Kantor's LinkedIn profile"
+                <button
+                  onClick={copyEmail}
+                  className="btn btn--secondary btn--sm"
+                  type="button"
+                  aria-label="Copy email address to clipboard"
                 >
-                  linkedin.com/in/maxim-kantor-0a423125
-                </a>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy email
+                </button>
               </div>
-            </div>
-            
-            <div className="contact-actions">
-              <a
-                href="mailto:mykantor@bellsouth.net"
-                className="btn btn--secondary btn--sm"
-                aria-label="Open email client"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email me
-              </a>
-              <button
-                onClick={copyEmail}
-                className="btn btn--secondary btn--sm"
-                type="button"
-                aria-label="Copy email address to clipboard"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy email
-              </button>
             </div>
 
-            <div className="contact-resume">
-              <a
-                className="btn btn--primary btn--sm"
-                href="/Max-Kantor-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download Max Kantor's resume as PDF"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Download Resume
-              </a>
-              <span className="contact-resume__meta">PDF • Opens in new tab</span>
-              <a 
-                href="/Max-Kantor-Resume.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="contact-resume__link"
-                aria-label="View resume in browser"
-              >
-                View Resume →
-              </a>
+            <div className="contact-card__footer">
+              <div className="contact-resume">
+                <a
+                  className="btn btn--primary btn--sm"
+                  href="/Max-Kantor-Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Download Max Kantor's resume as PDF"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download Resume
+                </a>
+                <span className="contact-resume__meta">PDF • Opens in new tab</span>
+                <a 
+                  href="/Max-Kantor-Resume.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="contact-resume__link"
+                  aria-label="View resume in browser"
+                >
+                  View Resume →
+                </a>
+              </div>
             </div>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <div className="contact-form__header">
-              <h3>Send a message <span className="contact-form__promise">· Typically responds within 24 hours</span></h3>
-            </div>
+            <div className="contact-form__body">
+              <div className="contact-form__header">
+                <h3>Send a message <span className="contact-form__promise">· Typically responds within 24 hours</span></h3>
+              </div>
 
-            <div className="contact-form__row">
+              <div className="contact-form__row">
               <label htmlFor="contact-name">
                 Name <span aria-label="required">*</span>
                 <input
@@ -461,8 +466,6 @@ const Contact = () => {
               )}
             </button>
 
-            <p className="contact-form__trust-text">No spam. Your message goes directly to me.</p>
-
             {status.message && (
               <div
                 className={`contact-form__status contact-form__status--${status.state}`}
@@ -489,6 +492,11 @@ const Contact = () => {
                 )}
               </div>
             )}
+            </div>
+
+            <div className="contact-form__footer">
+              <p className="contact-form__trust-text">No spam. Your message goes directly to me.</p>
+            </div>
           </form>
         </div>
       </div>

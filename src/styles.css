@@ -725,8 +725,9 @@ button[type='submit'] {
 .contact-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  height: auto;
 }
 
 .contact-card {
@@ -734,8 +735,9 @@ button[type='submit'] {
   border-radius: var(--radius);
   padding: 2rem;
   border: 1px solid var(--border);
-  display: grid;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .contact-card h3 {
@@ -799,6 +801,18 @@ button[type='submit'] {
   min-height: 44px;
 }
 
+.contact-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-card__footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
 .contact-resume {
   display: grid;
   gap: 0.5rem;
@@ -847,9 +861,23 @@ button[type='submit'] {
   border-radius: var(--radius);
   padding: 1.5rem;
   border: 1px solid var(--border);
-  display: grid;
-  gap: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
+}
+
+.contact-form__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.contact-form__footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
 .contact-form__header {
@@ -941,6 +969,7 @@ button[type='submit'] {
 .contact-form textarea {
   resize: vertical;
   min-height: 100px;
+  max-height: 160px;
 }
 
 .contact-form__error {
