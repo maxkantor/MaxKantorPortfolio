@@ -248,51 +248,52 @@ const Contact = () => {
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="contact-form__header">
-              <h3>Send a message</h3>
-              <p className="contact-form__promise">I reply within 24–48 hours.</p>
+              <h3>Send a message <span className="contact-form__promise">· I reply within 24–48 hours</span></h3>
             </div>
 
-            <label htmlFor="contact-name">
-              Name <span aria-label="required">*</span>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                placeholder="Your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                aria-required="true"
-                aria-invalid={errors.name ? 'true' : 'false'}
-                aria-describedby={errors.name ? 'name-error' : undefined}
-              />
-              {errors.name && (
-                <span id="name-error" className="contact-form__error" role="alert">
-                  {errors.name}
-                </span>
-              )}
-            </label>
+            <div className="contact-form__row">
+              <label htmlFor="contact-name">
+                Name <span aria-label="required">*</span>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                />
+                {errors.name && (
+                  <span id="name-error" className="contact-form__error" role="alert">
+                    {errors.name}
+                  </span>
+                )}
+              </label>
 
-            <label htmlFor="contact-email">
-              Email <span aria-label="required">*</span>
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                placeholder="your.email@company.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                aria-required="true"
-                aria-invalid={errors.email ? 'true' : 'false'}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-              />
-              {errors.email && (
-                <span id="email-error" className="contact-form__error" role="alert">
-                  {errors.email}
-                </span>
-              )}
-            </label>
+              <label htmlFor="contact-email">
+                Email <span aria-label="required">*</span>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  placeholder="your.email@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                />
+                {errors.email && (
+                  <span id="email-error" className="contact-form__error" role="alert">
+                    {errors.email}
+                  </span>
+                )}
+              </label>
+            </div>
 
             <label className="contact-form__honeypot" aria-hidden="true">
               Company Website
@@ -304,7 +305,7 @@ const Contact = () => {
               <textarea
                 id="contact-message"
                 name="message"
-                rows="5"
+                rows="4"
                 placeholder="Tell me about the opportunity or how I can help..."
                 value={formData.message}
                 onChange={handleChange}
