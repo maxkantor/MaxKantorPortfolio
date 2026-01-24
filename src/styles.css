@@ -722,6 +722,9 @@ button[type='submit'] {
   margin-bottom: 1rem;
 }
 
+#contact .section__header h2 { font-size: clamp(2.2rem, 3.2vw, 2.75rem); font-weight: 800; letter-spacing: -0.01em; }
+#contact .section__header p { font-size: 0.95rem; color: rgba(246, 247, 251, 0.7); }
+
 .contact-grid {
   display: grid;
   gap: 2rem;
@@ -732,12 +735,13 @@ button[type='submit'] {
 
 .contact-card {
   background: var(--card);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) + 2px);
   padding: 2rem;
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
 }
 
 .contact-card h3 {
@@ -858,19 +862,20 @@ button[type='submit'] {
 
 .contact-form {
   background: var(--card);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) + 2px);
   padding: 1.5rem;
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
 }
 
 .contact-form__body {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 1.125rem;
   flex: 1;
   overflow-y: auto;
 }
@@ -886,7 +891,7 @@ button[type='submit'] {
 
 .contact-form__header h3 {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--text);
   display: flex;
@@ -911,8 +916,8 @@ button[type='submit'] {
   display: grid;
   gap: 0.25rem;
   font-weight: 500;
-  font-size: 0.8125rem;
-  color: rgba(246, 247, 251, 0.85);
+  font-size: 0.85rem;
+  color: rgba(246, 247, 251, 0.92);
   position: relative;
 }
 
@@ -935,12 +940,12 @@ button[type='submit'] {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 0.625rem 0.875rem;
+  padding: 0.75rem 0.95rem;
   color: var(--text);
   font-size: 0.9375rem;
   font-family: inherit;
   transition: border-color 0.2s ease, background-color 0.2s ease;
-  min-height: 42px;
+  min-height: 50px;
 }
 
 .contact-form input:hover,
@@ -954,7 +959,7 @@ button[type='submit'] {
   outline: none;
   border-color: var(--accent);
   background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 3px rgba(127, 230, 181, 0.1);
+  box-shadow: 0 0 0 3px rgba(108, 213, 255, 0.12);
 }
 
 .contact-form input:focus-visible,
@@ -963,23 +968,29 @@ button[type='submit'] {
   outline-offset: 2px;
 }
 
-.contact-form input[aria-invalid="true"],
-.contact-form textarea[aria-invalid="true"] {
+/* Show error borders only after interaction */
+.contact-form input:user-invalid:not(:focus),
+.contact-form textarea:user-invalid:not(:focus) {
   border-color: #ff9d9d;
 }
 
 .contact-form textarea {
   resize: vertical;
-  min-height: 100px;
-  max-height: 160px;
+  min-height: 160px;
+  max-height: 280px;
 }
 
 .contact-form__error {
-  font-size: 0.75rem;
-  color: #ff9d9d;
+  font-size: 0.7rem;
+  color: #ffb3b3;
   font-weight: 400;
   margin-top: -0.125rem;
 }
+
+/* Only reveal after interaction */
+.contact-form label .contact-form__error { display: none; }
+.contact-form label:has(input:user-invalid) .contact-form__error,
+.contact-form label:has(textarea:user-invalid) .contact-form__error { display: block; }
 
 .contact-form__hint {
   font-size: 0.75rem;
@@ -1007,10 +1018,10 @@ button[type='submit'] {
 }
 
 .contact-form__chip {
-  background: rgba(108, 213, 255, 0.08);
+  background: rgba(108, 213, 255, 0.07);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
   font-size: 0.75rem;
   font-weight: 500;
   color: rgba(246, 247, 251, 0.8);
@@ -1034,10 +1045,11 @@ button[type='submit'] {
 }
 
 .contact-form__chip--active {
-  background: var(--accent);
+  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
   color: #071018;
   border-color: var(--accent);
-  font-weight: 600;
+  font-weight: 650;
+  box-shadow: 0 4px 14px rgba(108, 213, 255, 0.25);
 }
 
 .contact-form__confirm-modal {
@@ -1106,8 +1118,9 @@ button[type='submit'] {
 
 .contact-form__submit {
   width: 100%;
-  min-height: 44px;
-  font-weight: 600;
+  min-height: 52px;
+  font-weight: 700;
+  font-size: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1123,6 +1136,7 @@ button[type='submit'] {
 
 .contact-form__submit:not(:disabled):hover {
   transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(108, 213, 255, 0.35);
 }
 
 .contact-form__submit:not(:disabled):active {
