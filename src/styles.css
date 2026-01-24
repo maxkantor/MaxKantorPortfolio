@@ -1178,6 +1178,9 @@ button[type='submit'] {
   gap: 0.75rem;
 }
 
+.formLabel { margin-bottom: 4px; display: inline-flex; align-items: center; gap: 4px; }
+.required { color: var(--color-error); font-size: 0.85em; line-height: 1; }
+
 .contact-form__status-link {
   color: #ff9d9d;
   text-decoration: underline;

@@ -364,8 +364,8 @@ const Contact = () => {
               </div>
 
               <div className="contact-form__row">
-              <label htmlFor="contact-name">
-                Name <span className="required" aria-label="required">*</span>
+              <label htmlFor="name" className="formLabel">
+                Name <span className="required">*</span>
                 <input
                   id="contact-name"
                   name="name"
@@ -385,8 +385,8 @@ const Contact = () => {
                 )}
               </label>
 
-              <label htmlFor="contact-email">
-                Email <span className="required" aria-label="required">*</span>
+              <label htmlFor="email" className="formLabel">
+                Email <span className="required">*</span>
                 <input
                   id="contact-email"
                   name="email"
@@ -416,8 +416,8 @@ const Contact = () => {
 
             {showConfirm && <ConfirmReplace onConfirm={confirmReplace} onCancel={cancelReplace} />}
 
-            <label htmlFor="contact-message">
-              Message <span className="required" aria-label="required">*</span>
+            <label htmlFor="message" className="formLabel">
+              Message <span className="required">*</span>
               <textarea
                 ref={textareaRef}
                 id="contact-message"
