@@ -21,33 +21,7 @@
    "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
   }
  },
- "Conditions": {
-  "CreateSesIdentity": {
-   "Fn::Not": [
-    {
-     "Fn::Equals": [
-      {
-       "Ref": "SesFromEmail"
-      },
-      ""
-     ]
-    }
-   ]
-  }
- },
  "Resources": {
-  "SesEmailIdentity": {
-   "Type": "AWS::SES::EmailIdentity",
-   "Properties": {
-    "EmailIdentity": {
-     "Ref": "SesFromEmail"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "MaxKantorPortfolioStack/SesEmailIdentity"
-   },
-   "Condition": "CreateSesIdentity"
-  },
   "ContactSesFunctionServiceRole1D42F7B7": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -114,7 +88,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-718522948657-us-east-1",
-     "S3Key": "c14b2994e43538e5b9e59648bee486da625990a4349b7b4c721ad263295a1872.zip"
+     "S3Key": "8a45be1e55267bc7c9ccb58db4719b51255179e93f466fb971746b6f8f07f7f8.zip"
     },
     "Environment": {
      "Variables": {
@@ -146,7 +120,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MaxKantorPortfolioStack/ContactSesFunction/Resource",
-    "aws:asset:path": "asset.c14b2994e43538e5b9e59648bee486da625990a4349b7b4c721ad263295a1872",
+    "aws:asset:path": "asset.8a45be1e55267bc7c9ccb58db4719b51255179e93f466fb971746b6f8f07f7f8",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -266,7 +240,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OUW6DQAxEz5L/jVugPUCCWjVfReQAkQMGOcAuwt4ghLh7tYsqVf16M/Z45BTS7B2SA85yrOru2PMd1qti1Zm8sQVOOJDSFEzubM3Kzhqc5bYKCeSN/RiQ+0tNVlkX0+NwrxHWT2+rGM0b+1cXNA0sws5uhnGAtXQ9hUVk4XqulpiLajOS3VCEVOAUYCSDs6860jMKGRy5RaUZl2cK65fqeBo5nAcEe1VsY/0uwqh0Xnd1sUrthL+v/bMxt22mJHF+qsjEB0IP2zYEvr2OXjdjXU3wkJdn+gZJAq+HhzAfJ2+VB4Jy5w9a58K7ZwEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12OUWrDQAxEz5L/tdLY5ABJobRfNc4BgrJWjWJ716y0McH47mHXFEq/3kgaDVNCWR3hsMNZCtv2xcA3WC6KtjfvP67GgCMpBYOzXJcBx1uLsHxEZ5W9S5a/uqYwsgh7txrGEZbGD5QOmbUf2D6zL6vVSHVFEVKBU4KRCs7R9qRnFDI4cYdKMz4fJSyfqtNp4vSekMaLYpfjN5FWjY+6qS+n1AX8rfZvzL51NQ2Jj8GSyQVSDrsuGb6jTlFX43xLcJf9oyzhcIS33V2YixCd8kjQbHwBjVYYM0UBAAA="
    },
    "Metadata": {
     "aws:cdk:path": "MaxKantorPortfolioStack/CDKMetadata/Default"

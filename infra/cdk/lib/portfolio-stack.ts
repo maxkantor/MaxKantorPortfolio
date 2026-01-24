@@ -4,7 +4,6 @@ import * as apigwv2 from 'aws-cdk-lib/aws-apigatewayv2';
 import * as integrations from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as ses from 'aws-cdk-lib/aws-ses';
 
 export class PortfolioStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -28,16 +27,8 @@ export class PortfolioStack extends cdk.Stack {
       default: 'http://localhost:5173',
     });
 
-    const shouldCreateIdentity = new cdk.CfnCondition(this, 'CreateSesIdentity', {
-      expression: cdk.Fn.conditionNot(
-        cdk.Fn.conditionEquals(fromEmail.valueAsString, '')
-      ),
-    });
-
-    const sesIdentity = new ses.CfnEmailIdentity(this, 'SesEmailIdentity', {
-      emailIdentity: fromEmail.valueAsString,
-    });
-    sesIdentity.cfnOptions.condition = shouldCreateIdentity;
+    // SES email identity should already be verified in AWS SES console
+    // We don't create it here to avoid conflicts with existing identities
 
     const contactFunction = new lambda.Function(this, 'ContactSesFunction', {
       runtime: lambda.Runtime.NODEJS_20_X,
