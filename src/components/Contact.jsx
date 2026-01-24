@@ -114,12 +114,14 @@ const Contact = () => {
 
     try {
       const url = `${apiBase.replace(/\/$/, '')}/contact`;
+      console.log('Sending to:', url);
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
       });
       const data = await response.json().catch(() => ({}));
+      console.log('Response:', response.status, data);
 
       if (!response.ok || !data.ok) {
         throw new Error(data.error || 'Unable to send message.');
@@ -127,11 +129,15 @@ const Contact = () => {
 
       form.reset();
       setFormData({ name: '', email: '', message: '' });
+      setErrors({ name: '', email: '', message: '' });
+      setCanSubmit(false);
       setStatus({ state: 'success', message: 'Message sent. Thank you!' });
+      console.log('Email sent successfully!');
       setTimeout(() => {
         setStatus({ state: 'idle', message: '' });
       }, 5000);
     } catch (error) {
+      console.error('Contact form error:', error);
       setStatus({
         state: 'error',
         message: error.message || 'Something went wrong. Please try again.',

@@ -479,6 +479,7 @@ a[role='button'],
   transition: all 0.2s ease;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
+  cursor: pointer;
 }
 
 .btn--sm {
