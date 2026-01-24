@@ -100,7 +100,8 @@ const Contact = () => {
       return;
     }
 
-    const apiBase = import.meta.env.VITE_CONTACT_API_URL || '';
+    // Prefer env var but fall back to deployed API so the form still works if env is missing
+    const apiBase = (import.meta.env.VITE_CONTACT_API_URL || 'https://l0kj1d9qib.execute-api.us-east-1.amazonaws.com').trim();
     if (!apiBase) {
       setStatus({
         state: 'error',
