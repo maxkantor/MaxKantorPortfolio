@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: light;
   --bg: #0d0f14;
   --bg-alt: #121724;
@@ -662,14 +662,29 @@ button[type='submit'] {
   color: var(--muted);
 }
 
-.project-card__owned {
+.project-card__ownership {
   font-size: 0.9rem;
-  color: var(--muted);
 }
 
-.project-card__owned span {
+.project-card__ownership-title {
   color: var(--text);
   font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.project-card__bullets {
+  color: var(--muted);
+  margin: 0;
+  padding-left: 1.15rem;
+  line-height: 1.5;
+}
+
+.project-card__bullets li {
+  margin-bottom: 0.35rem;
+}
+
+.project-card__bullets li:last-child {
+  margin-bottom: 0;
 }
 
 .badge {

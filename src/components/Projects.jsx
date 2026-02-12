@@ -1,4 +1,4 @@
-﻿import { projects } from '../data/projects';
+import { projects } from '../data/projects';
 
 const Projects = () => {
   return (
@@ -9,45 +9,46 @@ const Projects = () => {
           <p>Production and in-progress apps I architected, built, and deployed.</p>
         </div>
         <div className="projects-grid">
-          {projects.map((project) => {
-            const visibleChips = project.stack.slice(0, 4);
-            const extraCount = project.stack.length - visibleChips.length;
-
-            return (
-              <article key={project.name} className="project-card">
+          {projects.map((project) => (
+            <article key={project.name} className="project-card">
               <div className="project-card__header">
                 <h3>{project.name}</h3>
-                  {project.status && (
-                    <span className="badge badge--subtle">{project.status}</span>
-                  )}
+                {project.status && (
+                  <span className="badge badge--subtle">{project.status}</span>
+                )}
               </div>
               <p className="project-card__value">{project.value}</p>
-              <p className="project-card__owned">
-                <span>What I owned:</span> {project.owned}
-              </p>
+              {project.bullets && (
+                <div className="project-card__ownership">
+                  <p className="project-card__ownership-title">Full Ownership & Execution</p>
+                  <ul className="project-card__bullets">
+                    {project.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="chip-group">
-                {visibleChips.map((chip) => (
+                {project.stack.map((chip) => (
                   <span key={chip} className="chip">
                     {chip}
                   </span>
                 ))}
-                {extraCount > 0 && <span className="chip chip--muted">+{extraCount}</span>}
               </div>
-                {project.liveUrl && (
-                  <div className="project-card__actions">
-                    <a
-                      className="btn btn--primary btn--sm"
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live
-                    </a>
-                  </div>
-                )}
+              {project.liveUrl && (
+                <div className="project-card__actions">
+                  <a
+                    className="btn btn--primary btn--sm"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live
+                  </a>
+                </div>
+              )}
             </article>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>
