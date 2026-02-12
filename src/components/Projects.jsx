@@ -1,18 +1,18 @@
-import { projects } from '../data/projects';
+import { projects, COMMON_STACK } from '../data/projects';
 
 const Projects = () => {
   return (
     <section id="projects" className="section">
       <div className="container">
         <div className="section__header">
-          <h2>Hands-on Product Builds</h2>
+          <h2>🚀 Production AI & Cloud Systems</h2>
           <p>Production and in-progress apps I architected, built, and deployed.</p>
         </div>
         <div className="projects-grid">
           {projects.map((project) => (
-            <article key={project.name} className="project-card">
+            <article key={project.name} className={`project-card${project.featured ? ' project-card--featured' : ''}`}>
               <div className="project-card__header">
-                <h3>{project.name}</h3>
+                <h3>{project.emoji} {project.name}</h3>
                 {project.status && (
                   <span className="badge badge--subtle">{project.status}</span>
                 )}
@@ -26,6 +26,7 @@ const Projects = () => {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
+                  <p className="project-card__common">Common across all apps: {COMMON_STACK}</p>
                 </div>
               )}
               <div className="chip-group">

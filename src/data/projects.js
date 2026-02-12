@@ -1,80 +1,92 @@
+export const COMMON_STACK =
+  'Amplify hosting + CI/CD automation • React/TypeScript • .NET/Lambda + API Gateway • Route 53 • Stripe payments';
+
 export const projects = [
   {
     name: 'AIWorkoutNow',
-    value: 'Fully architected and engineered AI-powered workout platform built from scratch, including frontend, backend, and AWS infrastructure.',
+    emoji: '🏋️',
+    value: 'AI-powered workout engine delivering structured training plans with real-time generation.',
     bullets: [
-      'System architecture design and end-to-end implementation',
-      'AWS: Amplify, API Gateway, Lambda, S3, Route 53, IAM, CloudWatch',
-      'DynamoDB data modeling and API design',
-      'OpenAI integration for workout generation',
-      'Authentication, payments (Stripe), deployment pipelines',
+      'AI-generated workout plans focused on conversion and fast UX.',
+      'Key Services: OpenAI • SSM • CloudWatch',
+      'Real-time generation pipeline, SSM config, CloudWatch observability.',
     ],
-    stack: ['AWS Amplify', 'API Gateway', 'Lambda', 'DynamoDB', 'OpenAI', 'React', '.NET'],
+    stack: ['Amplify', 'Lambda', 'DynamoDB', 'OpenAI', 'SSM', 'CloudWatch', 'React'],
     liveUrl: 'https://aiworkoutnow.com',
   },
   {
     name: 'DoctorAIBolit',
-    value: 'Full-stack AI health chat platform architected, built, and deployed from scratch. Frontend, backend, and AWS infra all self-implemented.',
+    emoji: '🩺',
+    value: 'AI health assistant with safety guardrails and conversational triage workflows.',
     bullets: [
-      'System architecture design and implementation',
-      'AWS: Amplify, API Gateway, Lambda, DynamoDB, S3, SSM, CloudWatch',
-      'AI integration with safety guardrails (Bedrock, OpenAI)',
-      'Authentication, security, and data isolation',
-      'CI/CD deployment and monitoring',
+      'AI health chat with safety-first messaging.',
+      'Key Services: OpenAI • SES • Secrets Manager',
+      'Safety guardrails, SES for follow-ups, Secrets Manager for credentials.',
     ],
-    stack: ['AWS Amplify', 'API Gateway', 'Lambda', 'DynamoDB', 'Bedrock', 'React', '.NET'],
+    stack: ['Amplify', 'Lambda', 'DynamoDB', 'OpenAI', 'SES', 'Secrets Manager', 'React'],
     liveUrl: 'https://doctoraibolit.com',
   },
   {
     name: 'LoveBehaviorTranslator',
-    value: 'Relationship insight tool fully architected and built from scratch—frontend, backend, AWS infrastructure, and AI integration.',
+    emoji: '💬',
+    value: 'AI-driven relationship insight tool designed for shareability and behavioral interpretation.',
     bullets: [
-      'System architecture and full implementation',
-      'AWS: Amplify, API Gateway, Lambda, DynamoDB, S3, Route 53',
-      'OpenAI API integration for behavioral analysis',
-      'Authentication, sharing flows, SEO optimization',
-      'Deployment pipelines and CloudWatch monitoring',
+      'Relationship insight tool designed for sharing and retention.',
+      'Key Services: OpenAI • SSM',
+      'Shareability-first design, SSM config, behavioral interpretation pipeline.',
     ],
-    stack: ['AWS Amplify', 'Lambda', 'DynamoDB', 'OpenAI', 'React', 'S3', 'Route 53'],
+    stack: ['Amplify', 'Lambda', 'DynamoDB', 'OpenAI', 'SSM', 'React'],
     liveUrl: 'https://lovebehaviortranslator.com',
   },
   {
     name: 'AnxietyChatAI',
-    value: 'Mental health support chat platform built from scratch. Full ownership of architecture, .NET backend, React frontend, and AWS deployment.',
+    emoji: '🧠',
+    value: 'Conversational mental health support platform focused on calm, low-friction interaction.',
     bullets: [
-      'System architecture and end-to-end build',
-      'AWS: Amplify, API Gateway, .NET Lambda, DynamoDB, S3, CloudWatch',
-      'OpenAI integration with conversational design',
-      'Authentication and security hardening',
-      'Deployment pipelines, logging, and monitoring',
+      'Calm, frictionless mental health support chat.',
+      'Key Services: OpenAI • Secrets Manager',
+      'Low-friction UX, Secrets Manager for credentials.',
     ],
-    stack: ['AWS Amplify', 'API Gateway', 'Lambda', 'DynamoDB', 'OpenAI', 'React', '.NET'],
+    stack: ['Amplify', 'Lambda', 'DynamoDB', 'OpenAI', 'Secrets Manager', 'React'],
     liveUrl: 'https://anxietychatai.com',
   },
   {
     name: 'LuckyNumbersLab',
-    value: 'Consumer app built from scratch. Full ownership of architecture, data modeling, frontend, and AWS infrastructure.',
+    emoji: '🎯',
+    value: 'Lightweight consumer analytics app optimized for speed, SEO, and discoverability.',
     bullets: [
-      'System architecture and implementation',
-      'AWS: Amplify, DynamoDB, S3, Route 53, CloudWatch',
-      'Data modeling and API design',
-      'React/TypeScript frontend, SEO optimization',
-      'Deployment and monitoring',
+      'Lightweight app focused on speed, SEO, and discoverability.',
+      'Key Services: DynamoDB • S3 • SSM • TypeScript',
+      'DynamoDB modeling, S3 assets, SSM config, SEO-first architecture.',
     ],
-    stack: ['AWS Amplify', 'DynamoDB', 'S3', 'Route 53', 'React', 'TypeScript'],
+    stack: ['Amplify', 'DynamoDB', 'S3', 'SSM', 'Route 53', 'React', 'TypeScript'],
     liveUrl: 'https://luckynumberslab.com',
   },
   {
     name: 'HybridRace Workouts',
-    value: 'HYROX-focused training platform fully architected and built from scratch. Frontend, backend, and AWS infrastructure—currently under active development.',
+    emoji: '💪',
+    value: 'HYROX-focused performance training platform with AI-powered coaching.',
     bullets: [
-      'System architecture design',
-      'AWS: Amplify, Lambda, DynamoDB, S3',
-      'React frontend, product delivery',
-      'In progress: deployment and AI integration',
+      'Bedrock-powered conversational coach.',
+      'CloudFormation-managed infrastructure.',
+      'Secure config via SSM.',
     ],
-    stack: ['AWS Amplify', 'Lambda', 'DynamoDB', 'React', 'S3'],
-    status: 'In progress',
+    stack: ['Amplify', 'Lambda', 'DynamoDB', 'Bedrock', 'CloudFormation', 'SSM', 'React'],
     liveUrl: 'https://www.hybridraceworkouts.com/',
+    featured: true,
   },
 ];
+
+// Dev safeguard: SSM and Secrets Manager must not co-exist in the same project
+if (import.meta.env?.DEV) {
+  projects.forEach((p) => {
+    const stack = p.stack || [];
+    const hasSSM = stack.some((s) => s === 'SSM');
+    const hasSecretsManager = stack.some((s) => s === 'Secrets Manager');
+    if (hasSSM && hasSecretsManager) {
+      throw new Error(
+        `Project "${p.name}" violates SSM/Secrets Manager separation: cannot use both in the same project.`
+      );
+    }
+  });
+}

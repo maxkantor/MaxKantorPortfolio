@@ -652,6 +652,10 @@ button[type='submit'] {
   box-shadow: var(--shadow);
 }
 
+.project-card--featured {
+  border-top: 2px solid rgba(108, 213, 255, 0.4);
+}
+
 .project-card__header {
   display: flex;
   justify-content: space-between;
@@ -660,10 +664,12 @@ button[type='submit'] {
 
 .project-card__value {
   color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .project-card__ownership {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .project-card__ownership-title {
@@ -675,8 +681,8 @@ button[type='submit'] {
 .project-card__bullets {
   color: var(--muted);
   margin: 0;
-  padding-left: 1.15rem;
-  line-height: 1.5;
+  padding-left: 1.1rem;
+  line-height: 1.55;
 }
 
 .project-card__bullets li {
@@ -685,6 +691,17 @@ button[type='submit'] {
 
 .project-card__bullets li:last-child {
   margin-bottom: 0;
+}
+
+.project-card__common {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--divider);
+  line-height: 1.4;
+  opacity: 0.6;
 }
 
 .badge {
