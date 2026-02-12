@@ -1,4 +1,4 @@
-﻿export const projects = [
+export const projects = [
   {
     name: 'AIWorkoutNow',
     value: 'AI-powered workout generator focused on conversion and fast UX.',
@@ -35,10 +35,11 @@
     liveUrl: 'https://luckynumberslab.com',
   },
   {
-    name: 'GoHyrox',
+    name: 'HybridRace Workouts',
     value: 'HYROX-focused training platform currently under active development.',
     owned: 'Product strategy, UX direction, delivery planning',
     stack: ['AWS', 'React', 'Product Delivery', 'In Progress'],
     status: 'In progress',
+    liveUrl: 'https://www.hybridraceworkouts.com/',
   },
 ];
