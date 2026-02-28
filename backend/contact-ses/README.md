@@ -1,4 +1,4 @@
-﻿# Contact SES Lambda
+# Contact SES Lambda
 
 This Lambda sends contact form submissions via AWS SES.
 
@@ -13,7 +13,7 @@ This Lambda sends contact form submissions via AWS SES.
 
 1. Install deps: `npm install`
 2. Zip the folder contents (including `node_modules`).
-3. Create Lambda (Node.js 20.x) and upload the zip.
+3. Create Lambda (Node.js 22.x) and upload the zip.
 4. Add environment variables above.
 5. Create an HTTP API in API Gateway:
    - Route: `POST /contact`

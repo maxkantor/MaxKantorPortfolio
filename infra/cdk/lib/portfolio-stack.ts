@@ -1,4 +1,4 @@
-﻿import * as cdk from 'aws-cdk-lib';
+import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as apigwv2 from 'aws-cdk-lib/aws-apigatewayv2';
 import * as integrations from 'aws-cdk-lib/aws-apigatewayv2-integrations';
@@ -31,7 +31,7 @@ export class PortfolioStack extends cdk.Stack {
     // We don't create it here to avoid conflicts with existing identities
 
     const contactFunction = new lambda.Function(this, 'ContactSesFunction', {
-      runtime: lambda.Runtime.NODEJS_20_X,
+      runtime: lambda.Runtime.NODEJS_22_X,
       handler: 'index.handler',
       code: lambda.Code.fromAsset('../../backend/contact-ses'),
       timeout: cdk.Duration.seconds(10),

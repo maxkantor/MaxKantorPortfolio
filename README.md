@@ -1,4 +1,4 @@
-﻿# Max Kantor Portfolio (React + Vite)
+# Max Kantor Portfolio (React + Vite)
 
 ## Quick Start
 
@@ -75,6 +75,6 @@ Then **redeploy** the Amplify app.
 ## Development Notes
 
 - Frontend: React 18 + Vite
-- Backend: Node.js 20 Lambda with AWS SES
+- Backend: Node.js 22 Lambda with AWS SES
 - Infrastructure: AWS CDK (TypeScript)
 - Contact form includes validation, CORS protection, and rate limiting
