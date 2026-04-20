@@ -26,7 +26,7 @@ const Projects = () => {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                  <p className="project-card__common">Common across all apps: {COMMON_STACK}</p>
+                  <p className="project-card__common">{project.commonLine || `Common across all apps: ${COMMON_STACK}`}</p>
                 </div>
               )}
               <div className="chip-group">
@@ -36,16 +36,22 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
-              {project.liveUrl && (
+              {(project.liveUrl || project.statusButton) && (
                 <div className="project-card__actions">
-                  <a
-                    className="btn btn--primary btn--sm"
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live
-                  </a>
+                  {project.liveUrl ? (
+                    <a
+                      className="btn btn--primary btn--sm"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live
+                    </a>
+                  ) : (
+                    <span className="btn btn--sm btn--status" aria-label="In Progress">
+                      {project.statusButton}
+                    </span>
+                  )}
                 </div>
               )}
             </article>
