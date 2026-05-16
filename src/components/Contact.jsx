@@ -332,7 +332,8 @@ const Contact = () => {
                 <a
                   className="btn btn--primary btn--sm"
                   href="/Max-Kantor-Resume.pdf"
-                  download="Max-Kantor-Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Download Max Kantor's resume as PDF"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -342,7 +343,7 @@ const Contact = () => {
                   </svg>
                   Download Resume
                 </a>
-                <span className="contact-resume__meta">PDF • Downloads</span>
+                <span className="contact-resume__meta">PDF • Opens in new tab</span>
                 <a 
                   href="/Max-Kantor-Resume.pdf" 
                   target="_blank" 
