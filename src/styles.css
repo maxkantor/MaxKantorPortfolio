@@ -225,13 +225,14 @@ textarea:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.35fr 0.8fr;
-  align-items: start;
-  min-height: clamp(640px, 76vh, 880px);
+  grid-template-columns: 1.4fr 0.6fr;
+  align-items: center;
+  min-height: auto;
   background: transparent;
   overflow: hidden;
   position: relative;
   z-index: 1;
+  padding: 2rem 0 0;
 }
 
 /* LEFT SIDE */
@@ -252,49 +253,14 @@ textarea:focus-visible {
   gap: 1.15rem;
 }
 
-/* RIGHT SIDE PHOTO PANEL */
+/* RIGHT SIDE PORTRAIT */
 .heroRight {
   position: relative;
   z-index: 1;
-}
-
-.heroRight__image {
-  position: relative;
-  background-image: url('/hero.jpg');
-  background-repeat: no-repeat;
-  background-size: 72% auto;
-  background-position: 55% 28%;
-  background-color: #070a12;
-}
-
-/* STRONGER GRADIENT OVERLAY - makes portrait supportive, not dominant */
-.heroRight__image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(7, 10, 18, 0.95) 0%,
-    rgba(7, 10, 18, 0.75) 18%,
-    rgba(7, 10, 18, 0.45) 40%,
-    rgba(7, 10, 18, 0.28) 65%,
-    rgba(7, 10, 18, 0.18) 85%,
-    rgba(7, 10, 18, 0.12) 100%
-  );
-  pointer-events: none;
-}
-
-/* Subtle vignette to further soften the portrait */
-.heroRight__image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 100% at 50% 50%,
-    transparent 0%,
-    rgba(7, 10, 18, 0.3) 100%
-  );
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem 2rem 0;
 }
 
 /* Premium badge for hero */
@@ -312,20 +278,6 @@ textarea:focus-visible {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(190, 242, 255, 0.95);
-}
-
-@media (min-width: 1100px) {
-  .heroRight { transform: none; margin-top: 0; top: auto; }
-  .portraitOffset { transform: translateY(10px); }
-}
-
-.portraitOffset {
-  overflow: visible;
-}
-
-.portraitOffset .heroRight__image {
-  width: 100%;
-  min-height: clamp(600px, 72vh, 840px);
 }
 
 /* Tech chips row */
@@ -1556,28 +1508,21 @@ main section {
 }
 
 @media (min-width: 1400px) {
-  .heroRight__image {
-    background-size: 70% auto;
-    background-position: 52% 28%;
-  }
-  
   .heroContent {
     margin-right: 56px;
   }
+
+  .hero-portrait__ring {
+    width: 320px;
+  }
 }
 
-/* Tablet: reduce portrait further */
+/* Tablet */
 @media (max-width: 1199px) and (min-width: 768px) {
   .hero {
-    grid-template-columns: 1.4fr 0.75fr;
-    min-height: clamp(560px, 68vh, 760px);
+    grid-template-columns: 1.35fr 0.65fr;
   }
-  
-  .heroRight__image {
-    background-size: 68% auto;
-    background-position: 50% 28%;
-  }
-  
+
   .heroContent {
     width: 95%;
     margin-right: 32px;
@@ -1610,37 +1555,20 @@ main section {
 
   .heroRight {
     order: 2;
+    padding: 0 20px 1.5rem;
   }
 
-  .hero-portrait-frame {
-    min-height: 300px;
-    margin: 0 20px;
+  .hero-portrait__ring {
+    width: min(220px, 58vw);
   }
 
-  .hero-portrait-frame .heroRight__image {
-    min-height: 300px;
-    background-size: 85% auto;
-    background-position: 50% 25%;
-    border-radius: 16px;
-    overflow: hidden;
+  .hero-portrait__img {
+    transform: scale(3.5);
   }
 
-  .heroRight__image::before {
-    background: linear-gradient(
-      180deg,
-      rgba(7, 10, 18, 0.15) 0%,
-      rgba(7, 10, 18, 0.35) 40%,
-      rgba(7, 10, 18, 0.65) 80%,
-      rgba(7, 10, 18, 0.80) 100%
-    );
-  }
-  
-  .heroRight__image::after {
-    background: radial-gradient(
-      ellipse 70% 100% at 50% 50%,
-      transparent 0%,
-      rgba(7, 10, 18, 0.4) 100%
-    );
+  .hero-portrait__glow {
+    width: 200px;
+    height: 200px;
   }
 
   .heroContent {
