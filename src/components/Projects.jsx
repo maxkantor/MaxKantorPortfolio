@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 
@@ -34,12 +33,6 @@ const ProjectPreview = ({ project }) => {
 };
 
 const Projects = () => {
-  const [expandedArchitecture, setExpandedArchitecture] = useState(null);
-
-  const toggleArchitecture = (name) => {
-    setExpandedArchitecture((current) => (current === name ? null : name));
-  };
-
   return (
     <section id="projects" className="section">
       <div className="container">
@@ -51,107 +44,88 @@ const Projects = () => {
           </p>
         </div>
         <div className="projects-grid">
-          {projects.map((project, index) => {
-            const isArchitectureOpen = expandedArchitecture === project.name;
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.name}
+              className={`project-card${project.featured ? ' project-card--featured' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.45, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <ProjectPreview project={project} />
 
-            return (
-              <motion.article
-                key={project.name}
-                className={`project-card${project.featured ? ' project-card--featured' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <ProjectPreview project={project} />
-
-                <div className="project-card__header">
-                  <h3>
-                    {project.emoji} {project.name}
-                  </h3>
-                  {project.statusButton && (
-                    <span className="badge badge--subtle">{project.statusButton}</span>
-                  )}
-                </div>
-
-                <div className="project-card__details">
-                  <div className="project-card__detail">
-                    <p className="project-card__detail-label">Problem</p>
-                    <p className="project-card__detail-text">{project.problem}</p>
-                  </div>
-                  <div className="project-card__detail">
-                    <p className="project-card__detail-label">Business Value</p>
-                    <p className="project-card__detail-text">{project.businessValue}</p>
-                  </div>
-                  {isArchitectureOpen && (
-                    <motion.div
-                      className="project-card__detail project-card__detail--architecture"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <p className="project-card__detail-label">Architecture</p>
-                      <p className="project-card__detail-text">{project.architecture}</p>
-                    </motion.div>
-                  )}
-                </div>
-
-                {project.bullets && (
-                  <div className="project-card__ownership">
-                    <p className="project-card__ownership-title">Full Ownership & Execution</p>
-                    <ul className="project-card__bullets">
-                      {project.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="project-card__header">
+                <h3>
+                  {project.emoji} {project.name}
+                </h3>
+                {project.statusButton && (
+                  <span className="badge badge--subtle">{project.statusButton}</span>
                 )}
+              </div>
 
-                <div className="chip-group">
-                  {project.stack.map((chip) => (
-                    <span key={chip} className="chip">
-                      {chip}
-                    </span>
-                  ))}
+              <div className="project-card__details">
+                <div className="project-card__detail">
+                  <p className="project-card__detail-label">Business Problem</p>
+                  <p className="project-card__detail-text">{project.problem}</p>
                 </div>
+                <div className="project-card__detail">
+                  <p className="project-card__detail-label">Architecture</p>
+                  <p className="project-card__detail-text">{project.architecture}</p>
+                </div>
+                <div className="project-card__detail">
+                  <p className="project-card__detail-label">Business Value</p>
+                  <p className="project-card__detail-text">{project.businessValue}</p>
+                </div>
+              </div>
 
-                <div className="project-card__actions">
-                  {project.liveUrl ? (
-                    <a
-                      className="btn btn--primary btn--sm"
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  ) : (
-                    <span className="btn btn--sm btn--status" aria-label="In Progress">
-                      {project.statusButton}
-                    </span>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      className="btn btn--secondary btn--sm"
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    className="btn btn--ghost btn--sm"
-                    onClick={() => toggleArchitecture(project.name)}
-                    aria-expanded={isArchitectureOpen}
+              {project.bullets && (
+                <div className="project-card__ownership">
+                  <p className="project-card__ownership-title">Full Ownership & Execution</p>
+                  <ul className="project-card__bullets">
+                    {project.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="chip-group">
+                {project.stack.map((chip) => (
+                  <span key={chip} className="chip">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+
+              <div className="project-card__actions">
+                {project.liveUrl ? (
+                  <a
+                    className="btn btn--primary btn--sm"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Architecture
-                  </button>
-                </div>
-              </motion.article>
-            );
-          })}
+                    Live Demo
+                  </a>
+                ) : (
+                  <span className="btn btn--sm btn--status" aria-label="In Progress">
+                    {project.statusButton}
+                  </span>
+                )}
+                {project.githubUrl && (
+                  <a
+                    className="btn btn--secondary btn--sm"
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

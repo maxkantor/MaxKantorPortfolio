@@ -4,7 +4,7 @@
       <div className="container footer__inner">
         <div className="footer__left">
           <p className="footer__name">Max Kantor</p>
-          <p className="footer__tagline">Director of Software Engineering · AI · Cloud · SaaS</p>
+          <p className="footer__tagline">Software Engineering Leadership · AI · Cloud · SaaS</p>
         </div>
 
         <div className="footer__center">© 2026 Max Kantor</div>

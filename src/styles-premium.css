@@ -29,6 +29,16 @@
   opacity: 0.5;
 }
 
+.premium-bg__nodes {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(79, 209, 255, 0.14) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 90% 80% at 60% 20%, black 10%, transparent 70%);
+  opacity: 0.35;
+  animation: mesh-drift 32s ease-in-out infinite alternate-reverse;
+}
+
 .premium-bg__orb {
   position: absolute;
   border-radius: 50%;
@@ -92,13 +102,14 @@
   display: grid;
   gap: 0.35rem;
   text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .kpi-card:hover {
   transform: translateY(-3px);
   border-color: rgba(79, 209, 255, 0.35);
-  box-shadow: 0 12px 32px rgba(79, 209, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(79, 209, 255, 0.12), 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .kpi-card__icon {
@@ -130,27 +141,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0;
+}
+
+.hero-portrait__backdrop {
+  position: absolute;
+  width: min(320px, 42vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-portrait__backdrop-grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(79, 209, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 209, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  transform: rotate(-8deg);
+  opacity: 0.7;
+}
+
+.hero-portrait__backdrop-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(79, 209, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(56, 189, 248, 0.08), transparent 50%);
+  animation: mesh-drift 24s ease-in-out infinite alternate;
 }
 
 .hero-portrait__glow {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: rgba(79, 209, 255, 0.14);
-  filter: blur(52px);
+  filter: blur(48px);
   pointer-events: none;
 }
 
 .hero-portrait__ring {
   position: relative;
-  width: min(300px, 38vw);
+  width: min(255px, 32vw);
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid rgba(79, 209, 255, 0.28);
   box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.45),
+    0 20px 48px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.06) inset;
   background: #0a0c10;
 }
@@ -161,6 +202,7 @@
   object-fit: cover;
   object-position: 50% 76%;
   transform: scale(3.6);
+  filter: brightness(1.1) contrast(1.04);
 }
 
 /* ─── Company logos ─── */
@@ -341,7 +383,11 @@ main,
 
 @media (max-width: 1199px) and (min-width: 768px) {
   .hero-portrait__ring {
-    width: min(260px, 42vw);
+    width: min(230px, 36vw);
+  }
+
+  .hero-portrait__backdrop {
+    width: min(280px, 44vw);
   }
 
   .hero-portrait__img {
@@ -357,7 +403,9 @@ main,
 
   .premium-bg__mesh,
   .premium-bg__orb,
-  .hero-portrait__glow {
+  .premium-bg__nodes,
+  .hero-portrait__glow,
+  .hero-portrait__backdrop-mesh {
     animation: none;
   }
 

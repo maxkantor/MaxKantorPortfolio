@@ -14,7 +14,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="hero__eyebrow">Director of Software Engineering</p>
+            <p className="hero__eyebrow">Software Engineering Leadership</p>
 
             <div className="hero__chips" aria-label="Core expertise">
               <span className="hero__chip">20+ Years</span>
@@ -27,26 +27,26 @@ const Hero = () => {
             </div>
 
             <h1>Max Kantor</h1>
-            <p className="hero__headline">Engineering Leader · AI · Cloud · SaaS</p>
-            <p className="hero__summary">
-              20+ years building enterprise software, leading engineering teams, and delivering
-              cloud-native AI products across healthcare, retail, telecom, and SaaS.
+            <p className="hero__headline">
+              Building High-Performing Engineering Teams · Cloud Platforms · AI Products
             </p>
 
             <p className="hero__executive-summary">
-              Technology executive specializing in cloud-native SaaS, enterprise modernization, and
-              AI-powered software delivery. I build high-performing engineering teams, architect
-              scalable cloud platforms, and align technology strategy with business goals while
-              remaining hands-on with modern software development.
+              Technology leader with 20+ years building enterprise software and 15+ years leading
+              engineering teams across healthcare, retail, telecom, SaaS, and AI-powered products.
+              I help organizations modernize platforms, improve engineering execution, build scalable
+              cloud solutions, and deliver software aligned with business goals while remaining
+              hands-on with architecture and modern development.
             </p>
 
             <div className="hero__leadership">
-              <p className="hero__leadership-title">How I Lead</p>
+              <p className="hero__leadership-title">Engineering Leadership</p>
               <ul className="hero__leadership-list">
-                <li>Set clear engineering standards, delivery cadence, and architectural guardrails</li>
-                <li>Mentor engineers through code review, design reviews, and career development</li>
-                <li>Improve execution with pragmatic Agile, CI/CD discipline, and measurable outcomes</li>
-                <li>Make architectural decisions that balance scale, speed, cost, and business risk</li>
+                <li>Build engineering culture rooted in accountability, craftsmanship, and delivery excellence</li>
+                <li>Mentor engineers through coaching, code review, and architecture guidance</li>
+                <li>Establish architecture governance that balances scale, reliability, and business risk</li>
+                <li>Drive predictable execution through Agile discipline, CI/CD, and measurable outcomes</li>
+                <li>Align technology strategy with product priorities and stakeholder goals</li>
               </ul>
             </div>
 
@@ -70,11 +70,13 @@ const Hero = () => {
                 Contact Me
               </a>
               <a className="btn btn--ghost" href="#contact">
-                Schedule Interview
+                Schedule a Call
               </a>
             </div>
 
-            <p className="hero__status">Open to Director & Senior Engineering Leadership roles</p>
+            <p className="hero__status">
+              Open to Engineering Manager, Senior Engineering Manager & Director roles
+            </p>
           </motion.div>
         </div>
 
@@ -85,14 +87,18 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
+            <div className="hero-portrait__backdrop" aria-hidden="true">
+              <div className="hero-portrait__backdrop-grid" />
+              <div className="hero-portrait__backdrop-mesh" />
+            </div>
             <div className="hero-portrait__glow" aria-hidden="true" />
             <div className="hero-portrait__ring">
               <img
                 src="/hero.jpg"
-                alt="Max Kantor — Director of Software Engineering"
+                alt="Max Kantor — Software Engineering Leader"
                 className="hero-portrait__img"
-                width={320}
-                height={320}
+                width={272}
+                height={272}
                 loading="eager"
                 decoding="async"
               />

@@ -19,7 +19,7 @@ const KPI_ITEMS = [
     id: 'leadership',
     value: 15,
     suffix: '+',
-    label: 'Years Leading Teams',
+    label: 'Years Leadership',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -48,7 +48,7 @@ const KPI_ITEMS = [
     id: 'products',
     value: 4,
     suffix: '',
-    label: 'Production AI Products',
+    label: 'AI Products Built',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -72,7 +72,7 @@ const KPI_ITEMS = [
   {
     id: 'psm',
     value: null,
-    display: 'PSM',
+    display: 'PSM I',
     label: 'Certified',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
