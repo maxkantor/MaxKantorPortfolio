@@ -225,8 +225,8 @@ textarea:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.35fr 0.8fr;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.8fr);
+  align-items: stretch;
   min-height: clamp(640px, 76vh, 880px);
   background: transparent;
   overflow: hidden;
@@ -254,41 +254,39 @@ textarea:focus-visible {
 .heroRight {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  overflow: hidden;
+  align-self: stretch;
 }
 
-.heroRight__image {
+.hero-portrait {
   position: relative;
-  background-image: url('/hero.jpg');
-  background-repeat: no-repeat;
-  background-size: 72% auto;
-  background-position: 55% 28%;
-  background-color: #070a12;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(600px, 72vh, 840px);
+  overflow: hidden;
+  background: #070a12;
+  isolation: isolate;
 }
 
-.heroRight__image::before {
+.hero-portrait__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 16%;
+}
+
+.hero-portrait::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(7, 10, 18, 0.95) 0%,
-    rgba(7, 10, 18, 0.75) 18%,
-    rgba(7, 10, 18, 0.45) 40%,
-    rgba(7, 10, 18, 0.28) 65%,
-    rgba(7, 10, 18, 0.18) 85%,
-    rgba(7, 10, 18, 0.12) 100%
-  );
-  pointer-events: none;
-}
-
-.heroRight__image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 100% at 50% 50%,
-    transparent 0%,
-    rgba(7, 10, 18, 0.3) 100%
+    rgba(7, 10, 18, 0.94) 0%,
+    rgba(7, 10, 18, 0.55) 12%,
+    rgba(7, 10, 18, 0.18) 26%,
+    transparent 42%
   );
   pointer-events: none;
 }
@@ -308,20 +306,6 @@ textarea:focus-visible {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(190, 242, 255, 0.95);
-}
-
-@media (min-width: 1100px) {
-  .heroRight { transform: none; margin-top: 0; top: auto; }
-  .portraitOffset { transform: translateY(10px); }
-}
-
-.portraitOffset {
-  overflow: visible;
-}
-
-.portraitOffset .heroRight__image {
-  width: 100%;
-  min-height: clamp(600px, 72vh, 840px);
 }
 
 /* Tech chips row */
@@ -1552,11 +1536,6 @@ main section {
 }
 
 @media (min-width: 1400px) {
-  .heroRight__image {
-    background-size: 70% auto;
-    background-position: 52% 28%;
-  }
-
   .heroContent {
     margin-right: 56px;
   }
@@ -1568,9 +1547,8 @@ main section {
     min-height: clamp(560px, 68vh, 760px);
   }
 
-  .heroRight__image {
-    background-size: 68% auto;
-    background-position: 50% 28%;
+  .hero-portrait {
+    min-height: clamp(520px, 68vh, 760px);
   }
 
   .heroContent {
@@ -1606,34 +1584,22 @@ main section {
     order: 2;
   }
 
-  .hero-portrait-frame {
-    min-height: 300px;
+  .hero-portrait {
+    min-height: 320px;
     margin: 0 20px;
-  }
-
-  .hero-portrait-frame .heroRight__image {
-    min-height: 300px;
-    background-size: 85% auto;
-    background-position: 50% 25%;
     border-radius: 16px;
-    overflow: hidden;
   }
 
-  .heroRight__image::before {
+  .hero-portrait__img {
+    border-radius: 16px;
+  }
+
+  .hero-portrait::after {
     background: linear-gradient(
       180deg,
-      rgba(7, 10, 18, 0.15) 0%,
-      rgba(7, 10, 18, 0.35) 40%,
-      rgba(7, 10, 18, 0.65) 80%,
-      rgba(7, 10, 18, 0.80) 100%
-    );
-  }
-
-  .heroRight__image::after {
-    background: radial-gradient(
-      ellipse 70% 100% at 50% 50%,
-      transparent 0%,
-      rgba(7, 10, 18, 0.4) 100%
+      rgba(7, 10, 18, 0.1) 0%,
+      rgba(7, 10, 18, 0.35) 55%,
+      rgba(7, 10, 18, 0.72) 100%
     );
   }
 

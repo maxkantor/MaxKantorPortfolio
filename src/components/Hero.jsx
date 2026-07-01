@@ -82,22 +82,21 @@ const Hero = () => {
 
         <div className="heroRight">
           <motion.div
-            className="hero-portrait-frame"
+            className="hero-portrait"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="hero-portrait-frame__mesh" aria-hidden="true" />
-            <div className="hero-portrait-frame__grid" aria-hidden="true" />
-            <div className="hero-portrait-frame__glow" aria-hidden="true" />
-            <div className="portraitOffset">
-              <div
-                className="heroRight__image"
-                role="img"
-                aria-label="Max Kantor — Software Engineering Leader"
-              />
-            </div>
-            <div className="hero-portrait-frame__glass" aria-hidden="true" />
+            <div className="hero-portrait__glow" aria-hidden="true" />
+            <img
+              src="/max-kantor-headshot.jpg"
+              alt="Max Kantor — Software Engineering Leader"
+              className="hero-portrait__img"
+              width={488}
+              height={510}
+              loading="eager"
+              decoding="async"
+            />
           </motion.div>
         </div>
       </section>
