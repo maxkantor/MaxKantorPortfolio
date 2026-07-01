@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 
 export function useCountUp(end, { duration = 1800, start = 0, enabled = true } = {}) {
   const [value, setValue] = useState(start);
-  const [ref, setRef] = useState(null);
+  const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-40px' });
 
   useEffect(() => {
@@ -23,5 +23,5 @@ export function useCountUp(end, { duration = 1800, start = 0, enabled = true } =
     return () => cancelAnimationFrame(frameId);
   }, [duration, end, enabled, isInView, start]);
 
-  return { ref: setRef, value };
+  return { ref, value };
 }
