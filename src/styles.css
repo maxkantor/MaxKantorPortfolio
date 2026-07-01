@@ -677,6 +677,43 @@ button[type='submit'] {
   font-weight: 600;
 }
 
+/* Experience section — compact vertical rhythm */
+#experience.section {
+  padding-top: 2.75rem;
+  padding-bottom: 5rem;
+}
+
+#experience .section__header {
+  margin-bottom: 32px;
+}
+
+#experience .section__header h2 {
+  margin-bottom: 12px;
+}
+
+#experience .company-logos {
+  margin-bottom: 40px;
+  padding: 0;
+  border-top: none;
+  border-bottom: none;
+}
+
+#experience .company-logos__label {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#experience .company-logos__grid {
+  gap: 1rem 1.75rem;
+}
+
+@media (max-width: 900px) {
+  #experience.section {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+}
+
 .projects-grid {
   display: grid;
   gap: 1.5rem;
