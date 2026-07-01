@@ -92,8 +92,8 @@ const Hero = () => {
               src="/max-kantor-headshot.jpg"
               alt="Max Kantor — Software Engineering Leader"
               className="hero-portrait__img"
-              width={488}
-              height={510}
+              width={600}
+              height={800}
               loading="eager"
               decoding="async"
             />

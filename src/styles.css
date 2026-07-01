@@ -225,9 +225,10 @@ textarea:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.8fr);
-  align-items: stretch;
-  min-height: clamp(640px, 76vh, 880px);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  min-height: 0;
   background: transparent;
   overflow: hidden;
   position: relative;
@@ -255,18 +256,25 @@ textarea:focus-visible {
   position: relative;
   z-index: 1;
   min-width: 0;
-  overflow: hidden;
-  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 28px 56px 0;
 }
 
 .hero-portrait {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: clamp(600px, 72vh, 840px);
+  width: min(100%, 320px);
+  aspect-ratio: 3 / 4;
+  max-height: min(68vh, 520px);
+  height: auto;
   overflow: hidden;
-  background: #070a12;
+  border-radius: 20px;
+  background: #0a0e16;
   isolation: isolate;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(79, 209, 255, 0.12);
 }
 
 .hero-portrait__img {
@@ -274,7 +282,7 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 16%;
+  object-position: center 22%;
 }
 
 .hero-portrait::after {
@@ -282,11 +290,9 @@ textarea:focus-visible {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    90deg,
-    rgba(7, 10, 18, 0.94) 0%,
-    rgba(7, 10, 18, 0.55) 12%,
-    rgba(7, 10, 18, 0.18) 26%,
-    transparent 42%
+    180deg,
+    transparent 55%,
+    rgba(7, 10, 18, 0.35) 100%
   );
   pointer-events: none;
 }
@@ -1539,16 +1545,21 @@ main section {
   .heroContent {
     margin-right: 56px;
   }
+
+  .hero-portrait {
+    width: min(100%, 340px);
+    max-height: min(72vh, 560px);
+  }
 }
 
 @media (max-width: 1199px) and (min-width: 768px) {
   .hero {
-    grid-template-columns: 1.4fr 0.75fr;
-    min-height: clamp(560px, 68vh, 760px);
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 300px);
   }
 
   .hero-portrait {
-    min-height: clamp(520px, 68vh, 760px);
+    width: min(100%, 280px);
+    max-height: min(62vh, 460px);
   }
 
   .heroContent {
@@ -1582,11 +1593,13 @@ main section {
 
   .heroRight {
     order: 2;
+    padding: 0 20px 1.5rem;
   }
 
   .hero-portrait {
-    min-height: 320px;
-    margin: 0 20px;
+    width: min(72vw, 280px);
+    max-height: none;
+    margin: 0 auto;
     border-radius: 16px;
   }
 
