@@ -90,10 +90,10 @@ const Hero = () => {
             <div className="heroPortraitCard">
               <img
                 src="/max-kantor-hero.png"
-                alt="Max Kantor professional headshot"
+                alt="Max Kantor, software engineering leader, in a modern office"
                 className="heroPortraitImage"
-                width={819}
-                height={1024}
+                width={1024}
+                height={819}
                 loading="eager"
                 decoding="async"
               />
