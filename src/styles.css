@@ -276,7 +276,7 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 24px;
+  gap: 28px;
   width: min(400px, 100%);
   flex-shrink: 0;
 }
@@ -322,14 +322,57 @@ textarea:focus-visible {
   filter: brightness(1.06) saturate(1.04);
 }
 
-.hero__leadership-card {
+.hero__profile {
   width: 100%;
   display: grid;
   gap: 0.55rem;
-  padding: 0.9rem 1rem;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.hero__profile-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0;
+}
+
+.hero__profile-focus {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(190, 242, 255, 0.88);
+  font-weight: 500;
+}
+
+.hero__profile-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  margin-top: 0.35rem;
+}
+
+.hero__profile-metric {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.hero__profile-metric-value {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.hero__profile-metric-label {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
 }
 
 /* Premium badge for hero */
@@ -444,7 +487,7 @@ textarea:focus-visible {
   border: 1px solid var(--border);
 }
 
-.hero__leadership-title {
+.hero__profile-title {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -453,38 +496,20 @@ textarea:focus-visible {
   margin: 0;
 }
 
-.hero__leadership-list {
-  list-style: none;
-  display: grid;
-  gap: 0.4rem;
-  margin: 0;
-  padding: 0;
-}
-
-.hero__leadership-list li {
-  position: relative;
-  padding-left: 0.95rem;
-  font-size: 0.84rem;
-  line-height: 1.45;
-  color: rgba(200, 210, 230, 0.95);
-}
-
-.hero__leadership-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.55rem;
   margin-top: 0.15rem;
+}
+
+.hero__actions .btn {
+  flex: 0 1 auto;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  min-height: 42px;
+  white-space: nowrap;
 }
 
 .hero__status {
@@ -1590,16 +1615,16 @@ main section {
 @media (max-width: 1199px) and (min-width: 901px) {
   .hero__right {
     width: min(320px, 100%);
-    gap: 20px;
+    gap: 24px;
   }
 
   .heroPortraitCard {
     max-width: 320px;
   }
 
-  .hero__leadership-list li {
-    font-size: 0.8rem;
-    line-height: 1.4;
+  .hero__actions .btn {
+    padding: 9px 10px;
+    font-size: 13px;
   }
 
   .hero h1 {
@@ -1623,7 +1648,7 @@ main section {
       'intro'
       'portrait'
       'summary'
-      'leadership'
+      'profile'
       'cta';
     padding: 28px 20px 20px;
     row-gap: 1rem;
@@ -1645,9 +1670,12 @@ main section {
     max-width: 100%;
   }
 
-  .hero__leadership-card {
-    grid-area: leadership;
+  .hero__profile {
+    grid-area: profile;
+    width: min(360px, 100%);
     max-width: 100%;
+    margin: 0 auto;
+    text-align: left;
   }
 
   .hero__intro,
@@ -1671,12 +1699,12 @@ main section {
   }
 
   .hero__actions {
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: wrap;
   }
 
   .hero__actions .btn {
-    width: 100%;
+    flex: 1 1 calc(50% - 0.35rem);
+    min-width: 140px;
     justify-content: center;
   }
 

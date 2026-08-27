@@ -53,20 +53,24 @@ const Hero = () => {
           </motion.div>
 
           <motion.aside
-            className="hero__leadership-card"
-            aria-label="Engineering Leadership"
-            initial={{ opacity: 0, y: 12 }}
+            className="hero__profile"
+            aria-label="Engineering Leadership profile"
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="hero__leadership-title">Engineering Leadership</p>
-            <ul className="hero__leadership-list">
-              <li>Build engineering culture rooted in accountability, craftsmanship, and delivery excellence</li>
-              <li>Mentor engineers through coaching, code review, and architecture guidance</li>
-              <li>Establish architecture governance that balances scale, reliability, and business risk</li>
-              <li>Drive predictable execution through Agile discipline, CI/CD, and measurable outcomes</li>
-              <li>Align technology strategy with product priorities and stakeholder goals</li>
-            </ul>
+            <p className="hero__profile-title">Engineering Leadership</p>
+            <p className="hero__profile-focus">Teams · Architecture · Cloud · AI · Delivery</p>
+            <div className="hero__profile-metrics">
+              <div className="hero__profile-metric">
+                <p className="hero__profile-metric-value">20+ Years</p>
+                <p className="hero__profile-metric-label">Software Engineering</p>
+              </div>
+              <div className="hero__profile-metric">
+                <p className="hero__profile-metric-value">15+ Years</p>
+                <p className="hero__profile-metric-label">Engineering Leadership</p>
+              </div>
+            </div>
           </motion.aside>
         </div>
 
