@@ -707,22 +707,6 @@ button[type='submit'] {
   margin-bottom: 12px;
 }
 
-#experience .company-logos {
-  margin-bottom: 40px;
-  padding: 0;
-  border-top: none;
-  border-bottom: none;
-}
-
-#experience .company-logos__label {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-#experience .company-logos__grid {
-  gap: 1rem 1.75rem;
-}
-
 @media (max-width: 900px) {
   #experience.section {
     padding-top: 2rem;

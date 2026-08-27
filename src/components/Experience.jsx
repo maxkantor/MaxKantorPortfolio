@@ -1,6 +1,5 @@
 ﻿import { motion } from 'framer-motion';
 import { experience } from '../data/experience';
-import CompanyLogos from './CompanyLogos.jsx';
 
 const Experience = () => {
   return (
@@ -13,8 +12,6 @@ const Experience = () => {
             product delivery at scale.
           </p>
         </div>
-
-        <CompanyLogos />
 
         <div className="experience-list">
           {experience.map((role, index) => (

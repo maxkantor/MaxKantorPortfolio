@@ -124,53 +124,6 @@
   font-weight: 500;
 }
 
-/* ─── Company logos ─── */
-.company-logos {
-  margin-bottom: 2.5rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
-}
-
-.company-logos__label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-  font-weight: 600;
-}
-
-.company-logos__grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem 2.5rem;
-}
-
-.company-logos__item {
-  flex: 1 1 120px;
-  display: flex;
-  justify-content: center;
-  opacity: 0.45;
-  filter: grayscale(1);
-  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
-}
-
-.company-logos__item:hover {
-  opacity: 1;
-  filter: grayscale(0);
-  transform: translateY(-2px);
-}
-
-.company-logos__item img {
-  height: 32px;
-  width: auto;
-  max-width: 140px;
-  color: var(--muted);
-}
-
 /* ─── Project preview (browser frame) ─── */
 .project-preview {
   border-radius: 10px;
@@ -288,15 +241,6 @@ main,
 @media (max-width: 767px) {
   .executive-impact__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .company-logos__grid {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .company-logos__item {
-    flex: 0 1 40%;
   }
 }
 
