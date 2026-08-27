@@ -69,9 +69,6 @@ const Hero = () => {
               <a className="btn btn--ghost" href="#contact">
                 Contact Me
               </a>
-              <a className="btn btn--ghost" href="#contact">
-                Schedule a Call
-              </a>
             </div>
 
             <p className="hero__status">
