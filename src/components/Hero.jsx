@@ -69,6 +69,14 @@ const Hero = () => {
               <a className="btn btn--ghost" href="#contact">
                 Contact Me
               </a>
+              <a
+                className="btn btn--ghost"
+                href="https://calendly.com/mykantor/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Call Me
+              </a>
             </div>
 
             <p className="hero__status">
