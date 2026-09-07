@@ -1,10 +1,13 @@
 ﻿import { motion } from 'framer-motion';
 import ExecutiveImpactBar from './ExecutiveImpactBar.jsx';
+import { useRouter } from '../utils/router.jsx';
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/maxim-kantor-0a423125/';
 const CALENDLY_URL = 'https://calendly.com/mykantor/30min';
 
 const Hero = () => {
+  const { navigate } = useRouter();
+
   return (
     <div className="hero-section">
       <section id="home" className="hero">
@@ -111,6 +114,13 @@ const Hero = () => {
             >
               Schedule a Call
             </a>
+            <button
+              type="button"
+              className="btn btn--ghost btn--consulting"
+              onClick={() => navigate('/consulting', { source: 'hero_actions_btn' })}
+            >
+              Consulting
+            </button>
             <a
               className="btn btn--ghost"
               href={LINKEDIN_URL}
@@ -127,6 +137,23 @@ const Hero = () => {
           <p className="hero__status">
             Open to Engineering Manager, Senior Engineering Manager & Director roles
           </p>
+
+          <div className="hero__consulting-callout">
+            <div className="hero__consulting-callout-text">
+              <span className="hero__consulting-callout-eyebrow">Available for Select Consulting Engagements</span>
+              <p className="hero__consulting-callout-focus">
+                AI · Architecture · Cloud · Engineering Leadership · Product Strategy
+              </p>
+              <span className="hero__consulting-callout-rate">Starting at $200/hour</span>
+            </div>
+            <button
+              type="button"
+              className="btn btn--secondary btn--sm hero__consulting-callout-btn"
+              onClick={() => navigate('/consulting', { source: 'hero_callout_btn' })}
+            >
+              Explore Consulting →
+            </button>
+          </div>
         </motion.div>
       </section>
 

@@ -1,4 +1,8 @@
-﻿const Footer = () => {
+﻿import { useRouter } from '../utils/router';
+
+const Footer = () => {
+  const { navigate } = useRouter();
+
   return (
     <footer className="footer">
       <div className="container footer__inner">
@@ -10,6 +14,16 @@
         <div className="footer__center">© 2026 Max Kantor</div>
 
         <nav className="footer__right" aria-label="Footer links">
+          <button
+            type="button"
+            className="footer__link footer__link--btn"
+            onClick={() => navigate('/consulting', { source: 'footer' })}
+          >
+            Consulting
+          </button>
+          <span className="footer__dot" aria-hidden="true">
+            •
+          </span>
           <a
             className="footer__link"
             href="https://www.linkedin.com/in/maxim-kantor-0a423125/"
