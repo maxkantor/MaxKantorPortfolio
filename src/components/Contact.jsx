@@ -13,7 +13,7 @@ export const INTEREST_OPTIONS = [
 ];
 
 export const BUDGET_OPTIONS = [
-  'Select engagement / budget...',
+  'Select budget range',
   'Hourly Consultation ($200+/hr)',
   'Architecture / AI Assessment ($1,500+)',
   'Technology Strategy Sprint ($2,500+)',
@@ -291,7 +291,7 @@ const Contact = ({ initialInterest = '', initialBudget = '', isConsultingView = 
       const formattedMessage = [
         `Interest: ${formData.interest}`,
         formData.company ? `Company: ${formData.company}` : null,
-        formData.budgetRange && formData.budgetRange !== 'Select engagement / budget...'
+        formData.budgetRange && formData.budgetRange !== 'Select budget range'
           ? `Budget / Engagement Range: ${formData.budgetRange}`
           : null,
         '',
@@ -316,7 +316,7 @@ const Contact = ({ initialInterest = '', initialBudget = '', isConsultingView = 
       trackInquirySubmit(
         formData.interest,
         formData.interest,
-        Boolean(formData.budgetRange && formData.budgetRange !== 'Select engagement / budget...')
+        Boolean(formData.budgetRange && formData.budgetRange !== 'Select budget range')
       );
 
       form.reset();

@@ -98,13 +98,6 @@ const ConsultingPage = () => {
               <a className="btn btn--secondary" href="#services">
                 Explore Services
               </a>
-              <button
-                type="button"
-                className="btn btn--ghost"
-                onClick={() => navigate('/', { source: 'consulting_to_leadership' })}
-              >
-                Full-Time Leadership Background →
-              </button>
             </div>
 
             <div className="consulting-hero__dual-path-note">
