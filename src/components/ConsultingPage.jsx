@@ -13,8 +13,7 @@ import {
   trackServiceClick,
 } from '../utils/analytics';
 import { useRouter } from '../utils/router';
-
-const CALENDLY_URL = 'https://calendly.com/mykantor/30min';
+import { CALENDLY_URL } from '../utils/calendly';
 
 const ConsultingPage = () => {
   const { navigate } = useRouter();

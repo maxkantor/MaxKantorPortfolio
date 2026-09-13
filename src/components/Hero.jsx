@@ -1,9 +1,9 @@
 ﻿import { motion } from 'framer-motion';
 import ExecutiveImpactBar from './ExecutiveImpactBar.jsx';
 import { useRouter } from '../utils/router.jsx';
+import { CALENDLY_URL } from '../utils/calendly';
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/maxim-kantor-0a423125/';
-const CALENDLY_URL = 'https://calendly.com/mykantor/30min';
 
 const Hero = () => {
   const { navigate } = useRouter();

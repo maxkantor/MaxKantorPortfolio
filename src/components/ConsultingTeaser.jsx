@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useRouter } from '../utils/router';
 import { trackConsultingBookClick } from '../utils/analytics';
-
-const CALENDLY_URL = 'https://calendly.com/mykantor/30min';
+import { CALENDLY_URL } from '../utils/calendly';
 
 const TEASER_AREAS = [
   {
